@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" href="./css/fancybox.min.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="./css/styles.css" media="screen, print" title="default">
+<script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/topClass.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./js/jquery.fancybox.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+<div id="wrapper">
+<!--#__header_html__#-->
+	<div id="container">
+	<div id="contentsCol">
+		<h2 class="titleIcon">全体修理案件／期間集計</h2>
+
+		<div class="innerWhite" style="display:flex">
+			<table class="basicTbl forPc" style="height:2em; min-width: 20%; margin-right:10px">
+			<thead>
+				<tr><th rowspan = "2">全体修理案件</th>
+					<th rowspan = "2">未完了</th>
+					<th colspan = "2">入庫</th>
+					<th colspan = "2">納車予定</th></tr>
+				<tr><th>鈑金</th><th>その他</th><th>鈑金</th><th>その他</th></tr>
+			</thead>
+			<tbody>
+				<tr><td class="aC"><span class="fontRed fontSize18"><!--#__repair_all_cnt__#--></span> 件</td>
+					<td class="aC"><span class="fontBlue fontSize18"><!--#__repair_now_cnt__#--></span> 件</td>
+					<td class="aC"><span class="fontBlue fontSize18"><!--#__repair_storing_cnt_1__#--></span> 件</td>
+					<td class="aC"><span class="fontBlue fontSize18"><!--#__repair_storing_cnt_oth__#--></span> 件</td>
+					<td class="aC"><span class="fontBlue fontSize18"><!--#__repair_delivered_cnt_1__#--></span> 件</td>
+					<td class="aC"><span class="fontBlue fontSize18"><!--#__repair_delivered_cnt_oth__#--></span> 件</td></tr>
+			</tbody>
+			</table>
+
+			<table class="basicTbl forSp">
+			<tbody>
+				<tr><th width="30%">全体修理案件</th>
+					<td class="aC"><span class="fontRed fontSize18"><!--#__repair_all_cnt__#--></span> 件</td></tr>
+				<tr><th width="30%">未完了</th>
+					<td class="aC"><span class="fontBlue fontSize18"><!--#__repair_now_cnt__#--></span> 件</td></tr>
+				<tr><th width="30%">入庫</th>
+					<td class="aC"><span class="fontBlue fontSize18"><!--#__repair_storing_cnt__#--></span> 件</td></tr>
+				<tr><th width="30%">納車予定</th>
+					<td class="aC"><span class="fontBlue fontSize18"><!--#__repair_delivered_cnt__#--></span> 件</td></tr>
+			</tbody>
+			</table>
+
+			<table class="basicTbl forPc" style="min-width: 53%">
+			<thead>
+				<tr><th>期間</th><th>入庫</th><th>出庫</th><th>クレーム</th><th>パーツ</th><th>作業無し</th><th>車両</th><th>車検･整備</tr>
+			</thead>
+			<tbody>
+			<!--%__sum_list__%-->
+				<tr><td class="aC"><!--#__period__#--></td><td class="aL"><!--#__storing__#--></td><td class="aL"><!--#__delivered__#--></td><td class="aR"><!--#__claim__#--> 件</td>
+					<td class="aR"><!--#__parts__#--> 件</td><td class="aR"><!--#__nowork__#--> 台</td><td class="aR"><!--#__total__#--> 台</td><td class="aR"><!--#__total_2__#--> 台</td></tr>
+			<!--%__/sum_list__%-->
+			</tbody>
+			</table>
+
+		<!--&__staff_list__&-->
+			<table class="basicTbl forPc">
+			<thead>
+				<tr><!--%__staff_list__%--><th width="<!--#__cell_par__#-->%"><!--#__wmm_name__#--></th><!--%__/staff_list__%--></tr>
+			</thead>
+			<tbody>
+				<tr><!--%__staff_list__%--><td class="aC"><a href="<!--#__link_url__#-->" class="fontBlue fontSize18"><!--#__repair_cnt__#--></a> 件</td><!--%__/staff_list__%--></tr>
+			</tbody>
+			</table>
+
+			<table class="basicTbl forSp">
+			<!--%__staff_list__%-->
+				<tr><th width="30%"><!--#__wmm_name__#--></th>
+					<td class="aC"><a href="<!--#__link_url__#-->" class="fontBlue fontSize18"><!--#__repair_cnt__#--></a> 件</td></tr>
+			<!--%__/staff_list__%-->
+			</table>
+		<!--&__/staff_list__&-->
+			<div style="margin-left:20px; width:100%;">
+				<p><a class="button buttonBlue w25" href="/repair/insu_agree.php">損保協定一覧</a></p>
+				<p><a class="button buttonGreen w25" href="/?md=out_delivery_sche">納車予定表</a></p>
+			</div>
+		</div><!-- /innerWhite -->
+
+<!--&__unlinked_list__&-->
+		<h2 class="repairIcon">未紐づけ車両</h2>
+		<div class="repairIndexBox">
+		<!--%__unlinked_list__%-->
+		<div class="insideBox">
+				<dl>
+					<dt>登録番号</dt><dd><!--#__wrp_regist_area__#--> <!--#__wrp_regist_class__#--> <!--#__wrp_regist_hira__#--> <!--#__wrp_regist_number__#-->&nbsp;</dd>
+					<dt>登録日時</dt><dd><!--#__wrp_created__#-->&nbsp;</dd>
+					<dt>車種</dt><dd><!--#__wmk_name__#-->&nbsp;<!--#__wrp_body_type__#-->&nbsp;</dd>
+				</dl>
+				<p class="aC"><a href="<!--#__link_url__#-->" class="button buttonMid buttonBlue">続けて登録</a>　　
+				<a href="javascript:;" class="button buttonMid del_repair" seq="<!--#__wrp_seq__#-->">削除</a></p>
+		</div><!--%__/unlinked_list__%-->
+		</div><!-- /repairIndexBox -->
+<!--&__/unlinked_list__&-->
+		<div style="display:flex;">
+			<div style="width:100%; overflow-x: scroll;">
+			<h2 class="repairIcon">進行中の修理案件</h2>
+			<div class="repairIndexBoxCtrl">
+			<p class="fR forPc" style="margin-right:5px;"><a href="<!--#__link_photo_view__#-->"><img src="./img/icon_photo_list.png" alt=""></a>　
+				<a href="<!--#__link_list_view__#-->"><img src="./img/icon_index_list.png" alt=""></a></p>
+			<form action="./" method="get">
+			<p><span class="actTitle">並び替え</span>
+				<!--&__link_new_sort__&--><a href="<!--#__link_new_sort__#-->">新着順</a><!--&__!link_new_sort__&-->新着順<!--&__/link_new_sort__&--> |
+				<!--&__link_complete_sort__&--><a href="<!--#__link_complete_sort__#-->">納車予定日が近い順</a><!--&__!link_complete_sort__&-->納車予定日が近い順<!--&__/link_complete_sort__&--> |
+				<!--&__link_completed_sort__&--><a href="<!--#__link_completed_sort__#-->">納車済み</a><!--&__!link_completed_sort__&-->納車済み<!--&__/link_completed_sort__&-->　<span class="clearBox forSp">br</span>
+				<span class="actTitle">件数</span>
+				<!--&__link_20_count__&--><a href="<!--#__link_20_count__#-->">20件</a><!--&__!link_20_count__&-->20件<!--&__/link_20_count__&--> |
+				<!--&__link_40_count__&--><a href="<!--#__link_40_count__#-->">40件</a><!--&__!link_40_count__&-->40件<!--&__/link_40_count__&--> |
+				<!--&__link_80_count__&--><a href="<!--#__link_80_count__#-->">80件</a><!--&__!link_80_count__&-->80件<!--&__/link_80_count__&-->　<span class="clearBox forSp">br</span>
+				<span class="actTitle">車台番号</span>
+				<input type="text" size="10" name="sk_chassis" class="aC" value="<!--#__sk_chassis__#-->">　<span class="clearBox forSp">br</span>
+				<span class="actTitle">登録番号</span>
+				<input type="text" size="10" name="sk_regist" class="aC" value="<!--#__sk_regist__#-->">　<span class="clearBox forSp">br</span>
+				<span class="actTitle">顧客・会社名</span>
+				<input type="text" size="15" name="sk_client_txt" class="aC" value="<!--#__sk_client_txt__#-->">　<span class="clearBox forSp">br</span>
+				<span class="actTitle">車種</span>
+				<input type="text" size="10" name="sk_body_type" class="aC" value="<!--#__sk_body_type__#-->">　<span class="clearBox forSp">br</span>
+				<a href="#" class="parentSubmit">絞り込み</a></p>
+			</form>
+			</div><!-- /repairIndexBoxCtrl -->
+	<!--&__photo_view__&-->
+	<!--&__repair_list__&-->
+				<div class="repairIndexBox">
+	<!--%__repair_list__%-->
+					<div class="insideBox <!--#__bg_color__#-->">
+						<p class="photo"><a href="<!--#__link_url__#-->"><img src="<!--#__photo_url__#-->" alt=""></a>
+						<!--&__comp_date__&--><span class="alertViewL">納車予定日</span><!--&__/comp_date__&-->
+						<!--&__wait_witness__&--><span class="alertViewR">立合い待ち</span><!--&__/wait_witness__&-->
+						<!--&__subcar_price__&--><span class="alertViewRB">代車代あり</span><!--&__/subcar_price__&-->
+						<!--&__subcar_estimate__&--><span class="alertViewRB">代車見積中</span><!--&__/subcar_estimate__&-->
+						<!--&__wdoc_count__&--><span class="alertViewLB">㊮</span><!--&__/wdoc_count__&-->
+						</p>
+						<p class="title"><!--&__wcm_company__&--><!--#__wcm_company__#--><br><!--&__/wcm_company__&--><!--#__wcm_name__#--></p>
+						<dl>
+							<dt>車種</dt><dd><!--#__wmk_name__#-->&nbsp;<!--#__wrp_body_type__#-->&nbsp;</dd>
+							<dt>登録番号</dt><dd><a href="<!--#__link_url_car__#-->"><!--#__wrp_regist_area__#--> <!--#__wrp_regist_class__#--> <!--#__wrp_regist_hira__#--> <!--#__wrp_regist_number__#-->&nbsp;</a></dd>
+							<dt>納車予定日</dt><dd><!--#__wdc_delivered_date__#-->&nbsp;</dd>
+							<dt>種別</dt><dd><!--#__wdc_type_jp__#-->&nbsp;</dd>
+							<!--<dt>状態</dt><dd><!--#__wdc_status__#-->&nbsp;</dd>-->
+							<!--<dt>重要度</dt><dd><img src="/img/icon_imp<!--#__wdc_important__#-->.png" alt="" width="55%"></dd>-->
+						</dl>
+						<p class="aC"><a href="<!--#__link_url__#-->" class="button buttonCircleArrow">詳細を見る</a></p>
+					</div>
+	<!--%__/repair_list__%-->
+				</div><!-- /repairIndexBox -->
+	<!--&__button_param__&--><p class="aC"><input type="button" value="More" rel="<!--#__button_param__#-->" class="loadMoreDatas button buttonBlue"></p><!--&__/button_param__&-->
+	<!--&__/repair_list__&-->
+	<!--&__/photo_view__&-->
+	<!--&__list_view__&-->
+			<div class="innerWhite">
+				<table class="basicTbl infoBoard repairThead" style="display:block; overflow-x: scroll;">
+				<thead>
+					<tr><th rowspan="2" style="min-width:70px">写真</th>
+						<th rowspan="2" style="min-width:230px">クライアント・お名前</th>
+						<th rowspan="2" style="min-width:150px">車種</th>
+						<th rowspan="2" style="min-width:82px">種別</th>
+						<!-- <th rowspan="2">状態</th> -->
+						<!-- <th rowspan="2">重要度</th> -->
+						<th rowspan="2" style="min-width:70px">入庫日</th>
+						<th rowspan="2" style="min-width:70px">立会日</th>
+						<th rowspan="2" style="min-width:85px">納車<br>予定日</th>
+						<th colspan="31" class="aL" id="calThL">
+							<a class="buttonMini buttonCircle dateSlide" href="<!--#__back_month_link__#-->">≪</a>
+							<a class="buttonMini buttonCircle dateSlide" href="<!--#__back_week_link__#-->">＜</a>　
+							<a class="buttonMini buttonWhite dateSlide" href="<!--#__today_link__#-->">今日</a>　
+							<a class="buttonMini buttonCircle dateSlide" href="<!--#__next_week_link__#-->">＞</a>
+							<a class="buttonMini buttonCircle dateSlide" href="<!--#__next_month_link__#-->">≫</a>
+							　　<!--#__this_month__#-->
+						</th>
+					</tr>
+					<tr class="calTr">
+						<!--%__cal_list__%-->
+							<th class="<!--#__youbi_class__#-->" style="min-width:16px" rel="<!--#__rel__#-->"><!--#__day__#--></th>
+						<!--%__/cal_list__%-->
+					</tr>
+				</thead>
+				<tbody class="repairTbody" style="display:inline-block">
+	<!--%__repair_list__%-->
+					<tr><td class="photo aC" style="min-width:80px"><a href="<!--#__link_url__#-->"><img class="thumb" src="<!--#__photo_url__#-->" alt=""></a></td>
+						<td class="aL" style="min-width:230px; max-width:230px"><!--&__wcm_company__&--><!--#__wcm_company__#--><br><!--&__/wcm_company__&--><!--#__wcm_name__#--></td>
+						<td class="aL" style="min-width:150px; max-width:150px"><a href="<!--#__link_url_car__#-->"><!--&__wmk_name__&--><!--#__wmk_name__#-->&nbsp;<!--&__/wmk_name__&--><!--#__wrp_body_type__#-->
+						<br><!--#__wrp_regist_area__#--> <!--#__wrp_regist_class__#--> <!--#__wrp_regist_hira__#--> <!--#__wrp_regist_number__#--></a></td>
+						<td class="aC" style="min-width:82px"><!--#__wdc_type_jp__#--></td>
+						<!-- <td class="aC"><!--#__wdc_status__#--></td> -->
+						<!-- <td class="aC"><!--#__wdc_important__#--></td> -->
+						<td class="aC" style="min-width:70px"><!--#__wdc_storing_date__#--></td>
+						<td class="aC" style="min-width:70px"><!--#__wdc_witness_date__#--></td>
+						<td class="aC" style="min-width:85px"><!--&__comp_date__&--><span class="newMark">納車予定日です</span><br><!--&__/comp_date__&--><!--#__wdc_delivered_date__#--></td>
+						<td class="scheLine" style="height: 4em;">
+						<input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->" />
+						<!--%__dummy__%-->
+							<div class="dummy"><!--#__day__#--></div>
+						<!--%__/dummy__%-->
+						<!--%__cal_list__%-->
+							<div class="ui-draggable <!--#__type_class__#-->" style="height:inherit; min-width:16px; color:#fff" data-type="<!--#__data-type__#-->" seq="<!--#__seq__#-->" st="<!--#__st__#-->"  ed="<!--#__ed__#-->">
+							<!--#__title__#--></div>
+						<!--%__/cal_list__%-->
+						<td style="display:none">
+						<a class="open_wdc" data-fancybox data-type="iframe" href="javascript:;" data-src="<!--#__edit_upside__#-->"><!--#__title__#--></a></div>
+						</td>
+						</td>
+					</tr>
+	<!--%__/repair_list__%-->
+				</tbody>
+				</table>
+			</div><!-- /innerWhite -->
+	<!--&__button_param__&--><p class="aC"><input type="button" value="More" rel="<!--#__button_param__#-->" class="loadMoreDatasVL button buttonBlue"></p><!--&__/button_param__&-->
+	<!--&__/list_view__&-->
+			</div>
+			<div id="div_info" style="width:23%; position: absolute; right:0;">
+				<h2 class="infoIcon" style="float: left"><a id="a_contact" href="javascript:;">社内連絡</a>
+				<span class="fontSize14"><!--&__is_unread__&--><font color="red">※新しい連絡があります。</font><!--&__!is_unread__&-->※各自必ず確認してください。<!--&__/is_unread__&--></span>
+				</h2>
+				<p style="margin-top: 5px;"><a class="buttonSlim buttonRed" href="javascript:;" data-fancybox data-type="iframe" data-src="./contact/detail.php">新規登録</a></p>
+			</div>
+			<div id="div_contact" style="width:40%; overflow-x: hidden; margin-top:3.5em;">
+	<!--
+				<h2 class="infoIcon" style="float: left">社内連絡　<span class="fontSize14">※各自必ず確認してください。</span></h2>
+				<p class="fR"><a class="button buttonRed" href="javascript:;" data-fancybox data-type="iframe" data-src="./contact/?md=insert&view=input&view_sys=iframe">新規登録</a></p>
+	 -->
+				<div class="editBox">
+					<!--#__contact_html__#-->
+				</div><!-- /editBox -->
+				<input type="hidden" id="is_new_message" value="<!--#__is_unread__#-->">
+			</div>
+		</div>
+	</div><!-- /contentsCol -->
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+</body>
+</html>
