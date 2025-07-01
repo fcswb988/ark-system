@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/submitClass.js"></script>
+<script type="text/javascript" src="/js/joinClass.js"></script>
+<script type="text/javascript">
+joinClass.sp_view = true;
+</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <a href="<!--#__back_list_url__#-->"><!--#__page_title__#--></a> ＞ お客様情報の登録</p>
+	
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+		
+		<div id="contentsCol">
+			<h2 class="titleIcon">お客様情報の登録</h2>
+			<div class="editBox">
+				<dl class="spInput">
+				<dt>車種</dt>
+					<dd><!--#__wrp_body_type__#--></dd>
+				<dt>重要度</dt>
+					<dd><img src="../img/icon_imp<!--#__wdc_important__#-->.png" alt="" width="50%"><br><!--#__wdc_imp_reason__#--></dd>
+				<dt>状態</dt>
+					<dd><!--#__wdc_status__#--></dd>
+				<dt>納車日</dt>
+					<dd><!--#__wdc_delivered_date__#--></dd>
+				<dt>整理番号</dt>
+					<dd><!--#__wrp_number__#--></dd>
+				<dt>登録番号</dt>
+					<dd><!--#__wrp_regist_area__#--> <!--#__wrp_regist_class__#--> <!--#__wrp_regist_hira__#--> <!--#__wrp_regist_number__#--></dd>
+				</dl>
+<!--&__direct_input_view__&-->
+				<h3>既に登録済みのお客様の場合</h3>
+				<form method="post" class="searchCustomer">
+				<p>検索条件を入力の上「検索実行」をクリックして下さい。最大20件まで表示されます。</p>
+				<!--&__err_mes__&--><p class="fontRed"><!--#__err_mes__#--></p><!--&__/err_mes__&-->
+					<dl class="spInput">
+						<dt>カテゴリー</dt>
+							<dd><select name="sk_cat"><option value="">▽選択▽</option>
+								<!--%__list_cat__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_cat__%-->
+								</select></dd>
+						<dt>クライアント</dt>
+							<dd><select name="sk_client"><option value="">▽選択▽</option>
+								<!--%__list_client__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_client__%-->
+								</select> 又は <input type="text" class="w30" name="sk_client_txt"></dd>
+						<dt>一般顧客</dt>
+							<dd><select name="sk_name"><option value="">▽選択▽</option>
+								<!--%__list_name__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_name__%-->
+								</select> 又は <input type="text" class="w30" name="sk_name_txt"></dd>
+					</dl>
+					<p class="aC"><a class="button buttonBlue searchCustomerButton" href="#">検索実行</a>
+						<input type="hidden" name="md" value="load_search_index" /></p>
+					
+					<div class="searchResult">
+					</div>
+				</form>
+				<form action="./join.php" method="post" class="inputView searchSelect">
+				<p>登録済みのお客様情報がある場合は、「お客様ID」を確認の上、紐付け登録を行って下さい。<a href="#" class="button buttonMini buttonRed customerIdSearchButton">ID検索を行う</a></p>
+				<dl class="spInput">
+				<dt>お客様ID</dt>
+					<dd><input type="text" name="wcm_seq" value="" class="txtsize15 imeoff"> <strong>※半角数字にて入力して下さい。</strong></dd>
+				</dl>
+				<p class="aC"><a class="button buttonBlue parentSubmit" href="#">確認画面へ</a>
+					<input type="hidden" name="md" value="direct_seq_update" />
+					<input type="hidden" name="view" value="direct_confirm" />
+					<input type="hidden" name="wrp_seq" value="<!--#__wrp_seq__#-->" />
+					<input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->" /></p>
+				</form>
+<!--&__/direct_input_view__&-->
+<!--&__direct_confirm_view__&-->
+				<h3>お客様IDがある場合</h3>
+				<p>下記のお客様情報との紐付けを実行します。よろしければ登録をクリックして下さい。</p>
+				<table>
+				<tr><th width="15%">クライアント名<br>名前</th>
+					<td width="35%"><!--#__wcm_company__#--><br><!--#__wcm_name__#--></td>
+					<th width="15%">登録日</th>
+					<td width="35%"><!--#__wcm_indate__#--></td></tr>
+				<tr><th>電話番号</th>
+					<td><!--#__wcm_tel__#--></td>
+					<th>メールアドレス</th>
+					<td><!--#__wcm_email__#--></td></tr>
+				<tr><th>住所</th>
+					<td><!--&__wcm_zipcode__&-->〒<!--#__wcm_zipcode__#--><br><!--&__/wcm_zipcode__&-->
+						<!--#__wcm_pref__#--><!--#__wcm_address__#--><!--&__wcm_building__&--><br><!--#__wcm_building__#--><!--&__/wcm_building__&--></td>
+					<th>アカウント</th>
+					<td><!--&__wcm_account__&-->アカウント名：<!--#__wcm_account__#--><br>パスワード：<!--#__wcm_pass__#--><!--&__!wcm_account__&-->未登録<!--&__/wcm_account__&--></td></tr>
+				<!--&__wcm_other__&--><tr><th>メモ</th>
+					<td colspan="3"><!--#__wcm_other__#--></td></tr><!--&__/wcm_other__&-->
+				</table>
+				<form action="./join.php" method="post" class="inputView">
+				<table>
+				</table>
+				<p class="aC"><input class="button buttonBlue" type="submit" value="登録" /> 
+					<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+					<input type="hidden" name="md" value="direct_seq_update_act" />
+					<input type="hidden" name="view" value="direct_finish" />
+					<input type="hidden" name="wcm_seq" value="<!--#__wcm_seq__#-->" />
+					<input type="hidden" name="wrp_seq" value="<!--#__wrp_seq__#-->" />
+					<input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->" /></p>
+				</form>
+<!--&__/direct_confirm_view__&-->
+<!--&__view_input__&-->
+				<h3>お客様情報を新規登録する場合</h3>
+				<form action="./join.php" method="post" class="inputView">
+					<!--#__detail_view__#-->
+					<p class="aC"><input class="button buttonBlue" type="submit" value="確認画面へ" /> 
+					<input type="hidden" name="seq" value="<!--#__mfl_seq__#-->" />
+					<input type="hidden" name="md" value="<!--#__now_mode__#-->" />
+					<input type="hidden" name="main_seq" value="<!--#__main_seq__#-->" />
+					
+					<input type="hidden" name="view" value="confirm" />
+					<input type="hidden" name="wrp_seq" value="<!--#__wrp_seq__#-->" />
+					<input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->" /></p>
+				</form>
+<!--&__/view_input__&-->
+<!--&__view_confirm__&-->
+				<h3>お客様情報を新規登録する場合</h3>
+				<form action="./join.php" method="post" class="confView">
+					<!--#__detail_view__#-->
+					<p class="aC"><!--&__submit_btn__&--><input class="button buttonBlue" type="submit" value="登録" /> <!--&__/submit_btn__&-->
+					<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+					<input type="hidden" name="seq" value="<!--#__mfl_seq__#-->" />
+					<input type="hidden" name="md" value="<!--#__now_mode__#-->" />
+					<input type="hidden" name="main_seq" value="<!--#__main_seq__#-->" />
+					
+					<input type="hidden" name="view" value="finish" />
+					<input type="hidden" name="wrp_seq" value="<!--#__wrp_seq__#-->" />
+					<input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->" /></p>
+				</form>
+<!--&__/view_confirm__&-->
+			</div><!-- /editBox -->
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+<!--&__editing_users__&-->
+<div class="editNowAlert">
+	<p>ただいま、<!--#__editing_users__#-->さんが編集中です。</p>
+</div>
+<!--&__/editing_users__&-->
+
+</body>
+</html>

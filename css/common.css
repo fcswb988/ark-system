@@ -1,0 +1,170 @@
+@charset "utf-8";
+
+* { margin: 0; padding: 0; font-size: 100%; font-style: normal;}
+
+@media only screen and (min-width: 1023px){
+/*
+* Noto Sans Japanese (japanese) http://www.google.com/fonts/earlyaccess
+ */
+@font-face {
+   font-family: 'Noto Sans Japanese';
+   font-style: normal;
+   font-weight: 300;
+   src: url(https://fonts.gstatic.com/ea/notosansjapanese/v5/NotoSansJP-DemiLight.woff2) format('woff2'),
+        url(https://fonts.gstatic.com/ea/notosansjapanese/v5/NotoSansJP-DemiLight.woff) format('woff'),
+        url(https://fonts.gstatic.com/ea/notosansjapanese/v5/NotoSansJP-DemiLight.otf) format('opentype');
+}
+@font-face {
+   font-family: 'Noto Sans Japanese';
+   font-style: normal;
+   font-weight: 900;
+   src: url(https://fonts.gstatic.com/ea/notosansjapanese/v5/NotoSansJP-Black.woff2) format('woff2'),
+        url(https://fonts.gstatic.com/ea/notosansjapanese/v5/NotoSansJP-Black.woff) format('woff'),
+        url(https://fonts.gstatic.com/ea/notosansjapanese/v5/NotoSansJP-Black.otf) format('opentype');
+ }
+}
+
+.mincho {
+    font-family: "游明朝",YuMincho,"ヒラギノ明朝 ProN W3","Hiragino Mincho ProN","HG明朝E","ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
+}
+
+body {
+	text-align: center;
+	background: #F7F8F8;
+	color: #333;
+	cursor: auto;
+	font: normal normal 14px/1.5 'Noto Sans Japanese', "Hiragino Kaku Gothic Pro W3", "繝偵Λ繧ｮ繝手ｧ偵ざ Pro W3", "MS PGothic", Arial, Helvetica, "・ｭ・ｳ ・ｰ繧ｴ繧ｷ繝・け", sans-serif;
+	letter-spacing: normal;
+	word-spacing: normal;
+	-webkit-text-size-adjust: 100%;
+}
+
+body.login { background: #000; color: #fff;}
+
+*:first-child + html body { font-size: 75%;} /* for IE 7 */
+* html body               { font-size: 75%;} /* for IE 6 or sooner */
+
+h1 {}
+h2 {}
+h3, h4, h5, h6 { padding: 10px 0 5px; letter-spacing: 0;}
+p { padding: 5px 0 5px;}
+blockquote { margin: 15px 0; padding: 10px 15px 3px; background: #faf6ed;}
+pre { background: #eee; margin: 1em 0; padding: 0 20px; overflow: auto; width: auto;}
+code { color: #5b5905; font-family: "Lucida Grande", "Courier New", Courier, mono, Verdana, sans-serif; letter-spacing: 0;}
+ul, ol { margin: 10px 0; padding: 0 0 0 30px;}
+dl { margin: 5px 0;}
+
+a         { color: #0071bb; text-decoration: underline; cursor: pointer;}
+a:visited { color: #3b41a4;}
+a:hover   { color: #f80;}
+a:focus,
+a:active  { color: #f90;}
+
+em     { font-weight: bold; color: #666;}
+strong { font-weight: bold; color: #e47;}
+abbr, acronym { cursor: help;}
+sup { vertical-align: super; font-size: 70%;}
+sub { vertical-align: baseline; font-size: 70%;}
+*:first-child + html sup { line-height: 1.5; font-size: 80%;} /* for IE 7 */
+* html sup               { line-height: 1.5; font-size: 80%;} /* for IE 6 or sooner */
+
+hr { display: none;}
+img { border: none; color: #fff; background: transparent; vertical-align: bottom;}
+embed, object { outline: 0; vertical-align: bottom;}
+
+table { border: 1px solid #aaa; border-collapse: collapse; margin-bottom: 5px;}
+caption { text-align: left;}
+thead {}
+tbody {}
+th { white-space: nowrap;}
+th, td {
+	padding: 2px 5px;
+	border-collapse: collapse;
+	border: 0.5px solid #aaa;
+	text-align: left;
+}
+
+.noborder { border: none; padding: 0px; margin: 0px;}
+
+fieldset {
+	border: 1px solid #ddd;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+* html legend { margin: 0 0 10px;}
+input,
+textarea { padding: 1px; font-family: Arial, Helvetica, "Hiragino Kaku Gothic Pro W3", "ヒラギノ角ゴ Pro W3", "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;}
+select option { padding: 0 5px;}
+input:focus,
+select:focus,
+textarea:focus { background-color: #fafafa;}
+label { cursor: pointer;}
+
+input::-webkit-input-placeholder { color: #777;}
+input:-ms-input-placeholder { color: #777;}
+input::-moz-placeholder { color: #777;}
+
+
+/******************************************************************** clearfix
+*/
+
+.clearfix:after { content: ""; clear: both; display: block;}
+
+/******************************************************************** utilities
+*/
+
+.aL { text-align: left !important;}
+.aC { text-align: center !important;}
+.aR { text-align: right !important;}
+.fR { float: right;}
+.fL { float: left;}
+.clr { float: none; clear: both;}
+.pF {position: fixed; bottom: 0; right:2em;}
+
+.jp { font-family: "ヒラギノ角ゴ Pro W3", Osaka, "ＭＳ Ｐゴシック", sans-serif;}
+.verdana { font-family: Verdana, sans-serif;}
+.times { font-family: "Times New Roman", Times, serif;}
+.bold {font-weight: bold;}
+
+.temp-notes { font-size: 120%; color: #c00; font-weight: bold; background: #f8f8f8; margin: 1em; padding: 1em;}
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	top: 30px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+	from {top: 0; opacity: 0;}
+	to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+	from {top: 0; opacity: 0;}
+	to {top: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+	from {top: 30px; opacity: 1;}
+	to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+	from {top: 30px; opacity: 1;}
+	to {top: 0; opacity: 0;}
+}

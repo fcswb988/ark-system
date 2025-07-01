@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/contactClass.js"></script>
+<script type="text/javascript" src="../system2/js/editFunc.js?ver=1.1.1"></script>
+<script type="text/javascript" src="../system2/js/imageFunc.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<!--&__sys_view__&-->
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <a href="./"><!--#__page_title__#--></a> ＞ <!--#__wct_subject__#--></p>
+<!--&__/sys_view__&-->
+
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+
+		<div id="contentsCol">
+			<form action="./detail.php" method="post" enctype="multipart/form-data" id="sendContact" onsubmit="return false;">
+			<div class="editBox forPc">
+				<h3>件名:
+			<!--&__wct_is_edit__&-->
+				<input type="text" name="wct_subject" value="<!--#__wct_subject__#-->" id="input_wct_subject" class=" txtsize90 imeon">
+			<!--&__!wct_is_edit__&-->
+				<!--#__wct_subject__#-->
+			<!--&__/wct_is_edit__&-->
+				　進捗：<select name="wct_status">
+					<!--%__wct_status_list__%-->
+					<option value="<!--#__value__#-->" <!--&__disabled__&-->disabled<!--&__/disabled__&--> <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+					<!--%__/wct_status_list__%-->
+				</select>
+				</h3>
+				<div style="height:700px; overflow-y:scroll;">
+				<table>
+				<thead>
+				<tr>
+					<th style="width:17%">担当者←送信者</th>
+					<th>メッセージ</th>
+					<th style="width:16%">添付</th>
+					<th style="width:16%">関連案件</th>
+					<th width="15%"><!--&__detail_list__&-->日付<!--&__/detail_list__&--></th>
+					<th width="5%"><!--&__detail_list__&--><!--&__/detail_list__&--></th>
+				</tr>
+				</thead>
+				<tbody>
+			<!--%__detail_list__%-->
+				<tr>
+					<td style="vertical-align: top; text-overflow: ellipsis;overflow: hidden;"><!--#__wmm_name_to__#-->←<!--#__wmm_name_from__#-->
+					<!--&__is_readed__&-->
+						<span style="color:green;">　既読<!--&__read_name__&-->：<!--#__read_name__#--><!--&__/read_name__&--></span>
+					<!--&__/is_readed__&-->
+						<input type="hidden" name="wcth_seq" value="<!--#__wcth_seq__#-->">
+					</td>
+					<td class="td_message">
+						<!--#__wcth_message__#-->
+					</td>
+					<td class="td_attachment">
+					<!--&__wcth_attachment__&-->
+						<a href="<!--#__attachment_url__#-->" target="_blank" download="<!--#__attachment_fname__#-->"><img width="210" src="<!--#__attachment_url__#-->" alt=""><!--#__attachment_fname__#--></a>
+					<!--&__/wcth_attachment__&-->
+					</td>
+					<td class="td_wdcseq">
+					<!--&__wcth_wdcseq__&-->
+						<a href="<!--#__wdc_url__#-->" target="_blank"><!--#__wdc_info__#--></a>
+					<!--&__/wcth_wdcseq__&-->
+					</td>
+					<td><!--#__wcth_created__#--></td>
+					<td class="aC">
+					<!--&__wcth_is_edit__&-->
+						<a style="display:none" class="buttonMini buttonGreen editButton" href="javasclipt:;">編集</a>
+						<a class="buttonMini buttonBlack deleteButton" href="javasclipt:;">削除</a>
+						<a style="display:none" class="buttonMini buttonBlue saveButton" href="javasclipt:;">保存</a>
+					<!--&__/wcth_is_edit__&-->
+					</td>
+				</tr>
+			<!--%__/detail_list__%-->
+				<tr style="border-left: hidden;border-right: hidden;border-bottom: hidden;">
+				<td style="border-style: none; vertical-align: top;">
+				<h3>新しいメッセージを送信</h3>
+				<select multiple size="7" name="wcth_to_user[]" id="wcth_to_user">
+					<!--%__to_list__%-->
+					<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+					<!--%__/to_list__%-->
+				</select>
+				←自分
+				</td>
+				<td style="border-style: none;">
+				<textarea style="font-size: 12px; width:95%; " name="wcth_message" rows="7"></textarea>
+				</td>
+				<td style="border-style: none;">
+				<!--#__wcth_attachment__#-->
+				</td>
+				<td class="aC" style="border-style: none;">
+					<a class="openWdcSelect" href="javasclipt:;">修理を選択</a>
+					<p class="wdc_text"></p>
+					<input type="hidden" name="wdc_seq" value="">
+				</td>
+				<td class="aC" style="border-style: none;">
+ 					<input name=send class="button buttonBlue" type="button" value="送信">
+				</td>
+				</tr>
+				</tbody>
+				</table>
+				</div>
+
+			</div><!-- /editBox -->
+
+			<div class="editBox forSp">
+				<h3><!--#__wct_subject__#--></h3>
+			<!--%__detail_list__%-->
+				<p><!--#__wmm_name_to__#-->←<!--#__wmm_name_from__#--></p>
+				<p><!--#__wct_message__#--></p>
+				<!--&__wct_photo__&-->
+				<p class="spPhoto"><a href="<!--#__photo_url__#-->"><img width="100%" src="<!--#__photo_url__#-->" alt=""></a></p>
+				<!--&__/wct_photo__&-->
+			<!--%__/detail_list__%-->
+			</div><!-- /editBox -->
+			<input type="hidden" name="md" value="save">
+			<input type="hidden" name="view_sys" <!--&__sys_view__&--><!--&__!sys_view__&-->value="iframe"<!--&__/sys_view__&-->>
+			<input type="hidden" name="wct_seq" value="<!--#__wct_seq__#-->">
+		</form>
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+<div id="wdcSelectWindow" class="popUpWindow">
+	<div class="inner">
+		<p class="closeButton"><a href="#">× CLOSE</a></p>
+		<div class="editBox">
+			<h2>修理情報選択</h2>
+			<form action="./" method="post">
+				<table class="basicBlock">
+					<tr><th>修理情報</th>
+						<td class="wdc_title"><span></span>
+						<select name="sel_wdc">
+							<!--%__sel_wdc_list__%--><option value="<!--#__value__#-->"<!--&__selected__&-->selected="selected"<!--&__/selected__&-->><!--#__title__#--></option><!--%__/sel_wdc_list__%-->
+						</select>
+						</td>
+					</tr>
+				</table>
+
+				<ul class="btnButtons">
+					<li><a class="button buttonRed wdcSelectButton" href="javasclipt:;">選択</a></li>
+				</ul>
+				<p class="hidden">
+					<input type="hidden" name="seq" value="">
+					<input type="hidden" name="md" value="">
+					<input type="hidden" name="back_url" value="<!--#__back_url__#-->">
+				</p>
+			</form>
+		</div><!-- /editBox -->
+	</div><!-- /inner -->
+</div><!-- /wdcSelectWindow -->
+
+<div id="maskFull"></div>
+
+</body>
+</html>
