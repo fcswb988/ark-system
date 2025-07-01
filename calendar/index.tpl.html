@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/calendarClass.js?20180424"></script>
+</head>
+<body class="calendar">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<div id="wrapper">
+<!--#__header_html__#-->
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+
+		<div id="contentsCol">
+			<h2 class="titleIcon fL"><!--#__page_title_sub__#--><input type="hidden" name="cal_type" value="<!--#__cal_type__#-->">
+			　(<!--#__first_date__#-->～<!--#__last_date__#-->)</h2>
+			<p class="fR titleIcon" id="printDtime" style="margin-left:1em; display:none;">yyyy/mm/dd hh:mm</p>
+			<div class="noprint">
+			<p class="fR" style="margin-left:1em;"><a class="buttonMini buttonBlue printCalHoliday" title="A横 白黒で印刷">休暇予定印刷</a></p>
+			<p class="fR" style="margin-left:5em;"><a class="buttonMini buttonBlue printCal" title="A横 白黒で印刷">印刷</a></p>
+			<p class="fR" style="margin-left:5em;"><a class="buttonMini buttonGreen" href="./?md=out_delivery_list">納車予定表</a></p>
+			<!--&__is_month_view__&-->
+				<p class="fR">
+					<a class="buttonMini buttonRed" href="<!--#__back_week_link__#-->">前週</a>　
+					<a class="buttonMini buttonRed" href="<!--#__back_link__#-->">前月</a>　
+					<a class="buttonMini buttonBlue" href="<!--#__view_week_link__#-->">2週表示</a>　
+					<a class="buttonMini buttonGreen" href="<!--#__view_month_link__#-->">今月</a>　
+					<a class="buttonMini buttonRed" href="<!--#__next_link__#-->">翌月</a>　
+					<a class="buttonMini buttonRed" href="<!--#__next_week_link__#-->">翌週</a></p>
+			<!--&__/is_month_view__&-->
+			<!--&__is_week_view__&-->
+				<p class="fR"><a class="buttonMini buttonRed" href="<!--#__back_week_link__#-->">前週</a>　
+					<a class="buttonMini buttonBlue" href="<!--#__view_month_link__#-->">月表示</a>　
+					<a class="buttonMini buttonGreen" href="<!--#__view_week_link__#-->">今日</a>　
+				<a class="buttonMini buttonRed" href="<!--#__next_week_link__#-->">翌週</a></p>
+			<!--&__/is_week_view__&-->
+			<p class="aC">
+				<a class="buttonMini buttonBlue" href="<!--#__all_link__#-->">全て</a>
+				<a class="buttonMini <!--&__storing_btn__&-->buttonStoring<!--&__!storing_btn__&-->buttonGray<!--&__/storing_btn__&-->" href="<!--#__storing_link__#-->">入庫</a>
+				<a class="buttonMini <!--&__formation_btn__&-->buttonFormation<!--&__!formation_btn__&-->buttonGray<!--&__/formation_btn__&-->" href="<!--#__formation_link__#-->">板金</a>
+				<a class="buttonMini <!--&__color_btn__&-->buttonColor<!--&__!color_btn__&-->buttonGray<!--&__/color_btn__&-->" href="<!--#__color_link__#-->">調色</a>
+				<a class="buttonMini <!--&__event_btn__&-->buttonEvent<!--&__!event_btn__&-->buttonGray<!--&__/event_btn__&-->" href="<!--#__event_link__#-->">塗装</a>
+				<a class="buttonMini <!--&__assembling_btn__&-->buttonAssembling<!--&__!assembling_btn__&-->buttonGray<!--&__/assembling_btn__&-->" href="<!--#__assembling_link__#-->">組付</a>
+				<a class="buttonMini <!--&__repair_btn__&-->buttonRepair<!--&__!repair_btn__&-->buttonGray<!--&__/repair_btn__&-->" href="<!--#__repair_link__#-->">納車</a>
+				<a class="buttonMini <!--&__inspection_c_btn__&-->buttonRegist<!--&__!inspection_c_btn__&-->buttonGray<!--&__/inspection_c_btn__&-->" href="<!--#__inspection_c_link__#-->">社用車検査予定</a>
+				<a class="buttonMini <!--&__regist_btn__&-->buttonRegist<!--&__!regist_btn__&-->buttonGray<!--&__/regist_btn__&-->" href="<!--#__regist_link__#-->">顧客車検予定</a>
+				<a class="buttonMini <!--&__staff_btn__&-->buttonStaff<!--&__!staff_btn__&-->buttonGray<!--&__/staff_btn__&-->" href="<!--#__staff_link__#-->">スタッフ</a>
+				<a class="buttonMini <!--&__memo_btn__&-->buttonMemo<!--&__!memo_btn__&-->buttonGray<!--&__/memo_btn__&-->" href="<!--#__memo_link__#-->">メモ</a></p>
+			</div>
+			<div class="editBox calendarView" style="display:flex; align-items:stretch; width:100%; overflow-y: auto;">
+				<input type="hidden" name="weeks" value="<!--#__view_week__#-->">
+				<table class="<!--&__is_week_view__&--> weekView<!--&__/is_week_view__&-->">
+				<thead class="cal_list">
+				<tr>
+					<th>月</th>
+					<th>火</th>
+					<th>水</th>
+					<th>木</th>
+					<th>金</th>
+					<th>土</th>
+					<th class="narrow">日&nbsp;<a href="javascript:;" class="w_toggle"><span class="">≫</span></a></th>
+				</tr>
+				</thead>
+				<tbody class="cal_list">
+				<!--%__cal_list__%-->
+					<!--&__open_fg__&--><tr style="height:25%"><!--&__/open_fg__&-->
+					<!--&__cal_sum_view__&--><td><ul class="calSum"><!--%__sum_dat__%--><li><!--#__sum_line__#--></li><!--%__/sum_dat__%--></ul></td><!--&__/cal_sum_view__&-->
+					<!--&__cal_view__&-->
+						<td rel="<!--#__now_date__#-->" class="daily<!--&__hol_title__&--> holiday<!--&__/hol_title__&--><!--&__sel_date__&--> colorNoWwl<!--&__/sel_date__&-->"
+						<!--&__close_fg__&--> style="overflow-x: hidden;"<!--&__/close_fg__&-->>
+						<div style="min-height: 8em;">
+						<a href="javascript:;" class="dayView aC"><span class="<!--#__you_class__#-->"><!--#__cal_view__#--></span></a>
+						<!--&__hol_title__&--><ul style=" overflow: hidden;"><li class="sun"><a href="javascript:;" class="holidayPickup sun"><!--#__hol_title__#--></a></li></ul><!--&__/hol_title__&-->
+						<!--&__part_dat_view__&-->
+						<ul class="partDatView" style=" overflow: hidden;">
+						<li><a href="javascript:;" class="overViewClose">× Close</a></li>
+						<!--%__part_dat_view__%--><li><a href="<!--#__link_url__#-->" class="<!--#__js_mode__#--> <!--#__wcm_class__#-->"
+							data-type="<!--#__cal_type__#-->"
+							<!--&__user_name__&--> data-name="<!--#__user_name__#-->"<!--&__/user_name__&-->
+							<!--&__user_color__&--> data-color="<!--#__user_color__#-->"<!--&__/user_color__&-->
+							<!--&__detail_window_list__&--> data-details="<!--#__detail_window_list__#-->"<!--&__/detail_window_list__&-->><!--#__view_name__#--></a></li><!--%__/part_dat_view__%-->
+						</ul>
+						<!--&__/part_dat_view__&-->
+						<!--&__part_dat__&-->
+						<ul class="partDat">
+							<!--%__part_dat__%-->
+							<li class="<!--#__js_mode__#--> <!--#__li_color__#-->">
+							<!--&__link_url__&--><a href="<!--#__link_url__#-->" class="<!--#__js_mode__#--> <!--#__wcm_class__#-->" rel="<!--#__seq__#-->" data-type="<!--#__cal_type__#-->" <!--&__user_name__&--> data-name="<!--#__user_name__#-->"<!--&__/user_name__&-->
+								<!--&__user_color__&--> data-color="<!--#__user_color__#-->"<!--&__/user_color__&--><!--&__detail_window_list__&--> data-details="<!--#__detail_window_list__#-->"<!--&__/detail_window_list__&-->>
+								<div style="display:flex; position: relative;"><p style="padding:0"><!--#__view_name__#--></p><p class="fixed"><!--#__deliv_fixed__#--></p></div></a>
+							<!--&__!link_url__&--><a href="javascript:;" class="overView repairView aC"><!--#__view_name__#--></a>
+							<!--&__/link_url__&--></li>
+							<!--%__/part_dat__%-->
+						</ul>
+							<!--&__/part_dat__&-->
+						<p class="addMemoButton noprint"><a href="javascript:;" class="memoView aC View">+</a></p>
+						</div>
+						</td>
+						<!--&__/cal_view__&-->
+					<!--&__close_fg__&--></tr><!--&__/close_fg__&-->
+				<!--%__/cal_list__%-->
+				</tbody>
+				</table>
+				<p class="hidden">
+					<!--&__storing_btn__&--><input type="hidden" name="view_storing" value="1"><!--&__/storing_btn__&-->
+					<!--&__formation_btn__&--><input type="hidden" name="view_formation" value="1"><!--&__/formation_btn__&-->
+					<!--&__assembling_btn__&--><input type="hidden" name="view_assembling" value="1"><!--&__/assembling_btn__&-->
+					<!--&__color_btn__&--><input type="hidden" name="view_color" value="1"><!--&__/color_btn__&-->
+					<!--&__repair_btn__&--><input type="hidden" name="view_repair" value="1"><!--&__/repair_btn__&-->
+					<!--&__regist_btn__&--><input type="hidden" name="view_regist" value="1"><!--&__/regist_btn__&-->
+					<!--&__event_btn__&--><input type="hidden" name="view_event" value="1"><!--&__/event_btn__&-->
+					<!--&__staff_btn__&--><input type="hidden" name="view_staff" value="1"><!--&__/staff_btn__&-->
+					<!--&__memo_btn__&--><input type="hidden" name="view_memo" value="1"><!--&__/memo_btn__&-->
+				</p>
+				<table id="tbl_no_decided" style="width:12%">
+				<thead>
+				<tr>
+					<th class="color28">納車日未定</th>
+				</tr>
+				</thead>
+				<tbody class="cal_list">
+				<tr>
+					<td rel="0000-00-00" class="no_decided" style="height:100%">
+						<ul class="" style="padding-left: 0px;">
+						<!--%__no_decided_list__%-->
+							<li class="<!--#__js_mode__#--> <!--#__li_color__#-->"><!--&__link_url__&--><a href="<!--#__link_url__#-->" class="<!--#__js_mode__#--> <!--#__wcm_class__#-->" rel="<!--#__seq__#-->" data-type="<!--#__cal_type__#-->" <!--&__user_name__&--> data-name="<!--#__user_name__#-->"<!--&__/user_name__&-->
+							<!--&__user_color__&--> data-color="<!--#__user_color__#-->"<!--&__/user_color__&--><!--&__detail_window_list__&--> data-details="<!--#__detail_window_list__#-->"<!--&__/detail_window_list__&-->><!--#__view_name__#--></a><!--&__!link_url__&--><a href="javascript:;" class="overView repairView aC"><!--#__view_name__#--></a><!--&__/link_url__&--></li>
+						<!--%__/no_decided_list__%-->
+						</ul>
+					</td>
+				</tr>
+				</tbody>
+				</table>
+				<div id="div_hourly" style="width:14%">
+				<table>
+				<thead>
+				<tr>
+					<th id="sel_date" class="colorNoWwl"><!--#__sel_date__#--></th>
+				</tr>
+				</thead>
+				<tbody class="time_list">
+				<!--%__time_list__%-->
+				<tr>
+					<td rel="<!--#__time_range__#-->" class="hourly" style="<!--&__time_view__&-->border-top-style: solid; border-bottom-style: none;<!--&__!time_view__&-->border-top-style: dotted; border-bottom-style: dotted;<!--&__/time_view__&-->">
+					<!--&__time_view__&--><span class="time"><!--#__time_view__#--></span><!--&__/time_view__&-->
+					<!--&__part_dat__&-->
+						<ul class="partDat">
+						<!--%__part_dat__%--><li class="<!--#__js_mode__#--> <!--#__li_color__#-->"><!--&__link_url__&--><a href="<!--#__link_url__#-->" class="<!--#__js_mode__#--> <!--#__wcm_class__#-->" rel="<!--#__seq__#-->" data-type="<!--#__cal_type__#-->" <!--&__user_name__&--> data-name="<!--#__user_name__#-->"<!--&__/user_name__&-->
+							<!--&__user_color__&--> data-color="<!--#__user_color__#-->"<!--&__/user_color__&--><!--&__detail_window_list__&--> data-details="<!--#__detail_window_list__#-->"<!--&__/detail_window_list__&-->><!--#__view_name__#--></a><!--&__!link_url__&--><a href="javascript:;" class="overView repairView aC"><!--#__view_name__#--></a><!--&__/link_url__&--></li><!--%__/part_dat__%-->
+						</ul>
+					<!--&__/part_dat__&-->
+					</td>
+				</tr>
+				<!--%__/time_list__%-->
+				</tbody>
+				</table>
+				</div>
+			</div><!-- /editBox -->
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+<div id="detailWindow" class="popUpWindow">
+	<div class="inner">
+		<p class="closeButton"><a href="#">× CLOSE</a></p>
+<!--&__is_car_view__&-->
+		<div class="editBox">
+			<table class="basicBlock">
+				<tr><th width="15%">名前</th>
+					<td width="35%" class="wcm_name"></td>
+					<th width="15%">登録日</th>
+					<td width="35%" class="wcm_indate"></td></tr>
+				<tr><th>電話番号</th>
+					<td class="wcm_tel"></td>
+					<th>メールアドレス</th>
+					<td class="wcm_email"></td></tr>
+				<tr><th>メモ</th>
+					<td colspan="3" class="wcm_other"></td></tr>
+			</table>
+
+			<div class="photoBlock">
+				<p class="image_photo"></p>
+				<table>
+					<tr><th width="12%">車種</th>
+						<td width="38%" class="wrp_body_type"></td>
+						<th width="12%">重要度</th>
+						<td width="38%" class="image_imp"></td></tr>
+					<tr><th>状態</th>
+						<td class="image_status"></td>
+						<th>納車日</th>
+						<td class="wdc_delivered_date"></td></tr>
+					<tr><th>整理番号</th>
+						<td class="wrp_number"></td>
+						<th>登録番号</th>
+						<td><span class="wrp_regist_area"></span>
+							<span class="wrp_regist_class"></span>
+							<span class="wrp_regist_hira"></span>
+							<span class="wrp_regist_number"></span></td></tr>
+					<tr><th>初度登録年月日</th>
+						<td class="wrp_first_date"></td>
+						<th>車検証有効期限</th>
+						<td class="wrp_regist_lim_date"></td></tr>
+				</table>
+			</div><!-- /photoBlock -->
+
+			<ul class="btnButtons">
+				<li><a class="button buttonRed conditionLink" href="/repair/condition.php?wcm_seq=28&wrp_seq=24&wdc_seq=20">進捗・状況を見る</a></li>
+				<li><a class="button buttonRed detailLink" href="/customers/detail.php?wcm_seq=28">顧客情報詳細を見る</a></li>
+			</ul>
+
+			<p class="hidden">
+				<input type="hidden" name="yy" value="<!--#__yy__#-->">
+				<input type="hidden" name="mm" value="<!--#__mm__#-->">
+					<input type="hidden" name="targ_date" value="<!--#__targ_date__#-->">
+					<input type="hidden" name="focus_date" value="<!--#__focus_date__#-->">
+					<input type="hidden" name="type" value="repair">
+					<input type="hidden" name="view" value="<!--#__view__#-->">
+			</p>
+		</div><!-- /editBox -->
+<!--&__/is_car_view__&-->
+
+<!--&__is_memo_view__&-->
+		<div class="editBox">
+			<form action="./" method="post">
+				<table class="basicBlock">
+					<tr><th width="15%">種別</th>
+						<td width="85%">
+							<ul class="typeList">
+								<li><label><input type="radio" name="wcd_type" value="staff" class="staff">スタッフ</label></li>
+								<li><label><input type="radio" name="wcd_type" value="memo" class="memo" checked="checked">メモ</label></li>
+							</ul>
+						</td></tr>
+					<tr><th>件名</th>
+						<td><input type="text" name="wcd_title" value=""></td></tr>
+					<tr><th>日時</th>
+						<td><input type="text" name="wcd_date" class="txtsize15" value="<!--#__wcd_date__#-->">&nbsp;&nbsp;
+						<input type="text" name="wcd_start_dt" class="txtsize10 aC timepicker" autocomplete="off" value=""></td></tr>
+					<tr><th>担当</th>
+						<td>
+						<select name="wcd_wmmseq">
+							<!--%__sel_member_list__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&-->selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/sel_member_list__%-->
+							</select>
+						</td>
+					</tr>
+					<tr><th>カラー</th>
+						<td>
+<!--
+						<select name="wcd_color">
+							<!--%__sel_color_list__%--><option value="<!--#__sel_num__#-->" class="<!--#__sel_class__#-->" <!--&__fcs__&-->selected="selected"<!--&__/fcs__&-->>&nbsp;</option><!--%__/sel_color_list__%-->
+							</select>
+-->
+						<ul class="radioColor typeList">
+						<!--%__sel_color_list__%-->
+							<li><label style="display:block; width:3em;" class="<!--#__sel_class__#-->"><input type="radio" name="wcd_color" value="<!--#__sel_num__#-->">　　　　　</label></li>
+						<!--%__/sel_color_list__%-->
+						</ul>
+						</td></tr>
+					<tr><th>内容</th>
+						<td><textarea name="wcd_message"></textarea></td></tr>
+				</table>
+
+				<ul class="btnButtons">
+					<li><a class="button buttonRed calendarSaveButton" href="#">保存</a></li>
+					<li><a class="button calendarRemoveButton" href="#">削除</a></li>
+				</ul>
+				<p class="hidden">
+					<input type="hidden" name="yy" value="<!--#__yy__#-->">
+					<input type="hidden" name="mm" value="<!--#__mm__#-->">
+					<input type="hidden" name="dd" value="">
+					<input type="hidden" name="targ_date" value="<!--#__targ_date__#-->">
+					<input type="hidden" name="focus_date" value="<!--#__focus_date__#-->">
+
+					<input type="hidden" name="seq" value="">
+					<input type="hidden" name="md" value="">
+					<input type="hidden" name="type" value="<!--#__cal_type__#-->">
+					<input type="hidden" name="view" value="<!--#__view__#-->">
+					<input type="hidden" name="back_url" value="<!--#__back_url__#-->">
+				</p>
+			</form>
+		</div><!-- /editBox -->
+<!--&__/is_memo_view__&-->
+	</div><!-- /inner -->
+</div><!-- /detailWindow -->
+
+<div id="holidayWindow" class="popUpWindow">
+	<div class="inner">
+		<p class="closeButton"><a href="#">× CLOSE</a></p>
+		<div class="editBox">
+			<h2>休日の登録</h2>
+			<form action="./" method="post">
+				<table class="basicBlock">
+					<tr><th width="15%">年月日</th>
+						<td width="25%" class="mhd_date"></td>
+						<th width="15%">休日名称</th>
+						<td width="55%"><input type="text" name="mhd_title" class="txtsize25" value=""></td></tr>
+				</table>
+
+				<ul class="btnButtons">
+					<li><a class="button buttonRed holidaySaveButton" href="#">保存</a></li>
+					<li><a class="button holidayRemoveButton" href="#">削除</a></li>
+				</ul>
+				<p class="hidden">
+					<input type="hidden" name="yy" value="<!--#__yy__#-->">
+					<input type="hidden" name="mm" value="<!--#__mm__#-->">
+					<input type="hidden" name="dd" value="">
+					<input type="hidden" name="targ_date" value="<!--#__targ_date__#-->">
+					<input type="hidden" name="seq" value="">
+					<input type="hidden" name="md" value="">
+					<input type="hidden" name="back_url" value="<!--#__back_url__#-->">
+				</p>
+			</form>
+		</div><!-- /editBox -->
+	</div><!-- /inner -->
+</div><!-- /holidayWindow -->
+
+<div id="wdcTitleWindow" class="popUpWindow">
+	<div class="inner">
+		<p class="closeButton"><a href="#">× CLOSE</a></p>
+		<div class="editBox">
+			<h2>表示タイトル編集</h2>
+			<form action="./" method="post">
+				<table class="basicBlock">
+					<tr><th width="20%">表示タイトル</th>
+						<td width="80%"><input type="text" name="wdc_title" class="txtsize50" value=""></td></tr>
+				</table>
+
+				<ul class="btnButtons">
+					<li><a class="button buttonRed wdcTitleSaveButton" href="#">保存</a></li>
+					<li><a class="button wdcTitleRemoveButton" href="#">元に戻す</a></li>
+				</ul>
+				<p class="hidden">
+					<input type="hidden" name="seq" value="">
+					<input type="hidden" name="md" value="">
+					<input type="hidden" name="back_url" value="<!--#__back_url__#-->">
+				</p>
+			</form>
+		</div><!-- /editBox -->
+	</div><!-- /inner -->
+</div><!-- /wdcTitleWindow -->
+
+<div id="wdcProcWindow" class="popUpWindow">
+	<div class="inner">
+		<p class="closeButton"><a href="#">× CLOSE</a></p>
+		<div class="editBox">
+			<h2>工程の登録</h2>
+			<form action="./" method="post">
+				<table class="basicBlock">
+					<tr><th width="15%">年月日</th>
+						<td width="25%" class="targ_date">
+						</td></tr>
+					<tr><th>日程</th>
+						<td class="proc_date">
+						<input type="text" name="proc_date" class="datePicker txtsize15" value="">
+						から <input type="text" name="proc_days" class="txtsize5" value="">日</td></tr>
+					<tr><th>工程</th>
+						<td>
+						<ul class="typeList">
+						<!--%__sel_proc_list__%-->
+							<li><label style="display:block; width:4em;" class="<!--#__sel_class__#-->"><input type="radio" name="proc" value="<!--#__sel_num__#-->"><!--#__sel_val__#--></label></li>
+						<!--%__/sel_proc_list__%-->
+						</ul>
+						</td></tr>
+					<tr><th>修理情報</th>
+						<td class="wdc_title"><span></span>
+						<select name="sel_wdc">
+							<!--%__sel_wdc_list__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&-->selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/sel_wdc_list__%-->
+						</select>
+						</td>
+					</tr>
+					<tr><th>担当</th>
+						<td>
+						<select name="sel_wmm">
+							<option value="<!--#__sel_num__#-->"<!--&__fcs__&-->selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option>
+						</select>　　
+						<select name="sel_wmm2">
+							<option value="<!--#__sel_num__#-->"<!--&__fcs__&-->selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option>
+						</select>
+						</td>
+					</tr>
+					<tr class="title"><th>表示タイトル</th>
+						<td><input type="text" name="title" class="txtsize50" value=""></td>
+					</tr>
+				</table>
+
+				<ul class="btnButtons">
+					<li><a class="button buttonRed wdcProcSaveButton" href="#">保存</a></li>
+					<li><a class="button wdcProcRemoveButton" href="#">この日程を削除</a></li>
+				</ul>
+				<p class="hidden">
+					<input type="hidden" name="targ_date" value="<!--#__targ_date__#-->">
+					<input type="hidden" name="wdc_seq" value="">
+					<input type="hidden" name="wcd_title" value="">
+					<input type="hidden" name="md" value="">
+					<input type="hidden" name="back_url" value="<!--#__back_url__#-->">
+				</p>
+			</form>
+		</div><!-- /editBox -->
+	</div><!-- /inner -->
+</div><!-- /holidayWindow -->
+
+
+  <ul class="dayMenu menu">
+    <li class="cm_day_title">休日登録
+		<input type="hidden" name="selDate" value="">
+		<input type="hidden" name="isHoliday" value="">
+    </li>
+  </ul>
+  <ul class="repairMenu menu">
+    <li class="cm_wdc_title">表示タイトル編集
+		<input type="hidden" name="seq" value="">
+		<input type="hidden" name="title" value="">
+    </li>
+    <li class="cm_wdc_delivered_fix">納車日確定<span class="fix_text"></span>
+		<form id="delivered_fix" action="./" method="post">
+			<input type="hidden" name="seq" value="">
+			<input type="hidden" name="fixed" value="false">
+			<input type="hidden" name="md" value="wdc_delivered_fix">
+			<input type="hidden" name="back_url" value="<!--#__back_url__#-->">
+		</form>
+    </li>
+  </ul>
+  <ul class="dailyMenu menu">
+    <li class="cm_memo">メモ登録
+		<input type="hidden" name="selDate" value="">
+    </li>
+    <li class="cm_proc">工程登録
+		<input type="hidden" name="selDate" value="">
+		<input type="hidden" name="wdc_seq" value="">
+    </li>
+  </ul>
+
+<div id="maskFull"></div>
+
+<div id="nameBaloonBox" style="display:none">
+	<dl>
+		<dt></dt>
+		<dd></dd>
+	</dl>
+</div>
+
+</body>
+</html>
