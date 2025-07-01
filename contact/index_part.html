@@ -1,0 +1,39 @@
+<script type="text/javascript" src="../js/contactClass.js"></script>
+	<table class="contactTbl forPc" style="max-width: fit-content;">
+		<thead>
+			<tr><th style="width:20%">担当者←送信者</th>
+				<th style="width:40%">件名</th>
+				<!--&__is_top__&-->
+				<th colspan="2" style="width:30%">進捗
+				&nbsp;<label for="incomplete"><input type="checkbox" id="incomplete" name="skc_incomplete" <!--&__skc_incomplete__&-->checked="checked"<!--&__/skc_incomplete__&-->>未完了のみ</label>
+				<span style="margin-left:1em">日時</span></th>
+				<!--&__!is_top__&-->
+				<th>進捗</th><th>日時</th>
+				<!--&__/is_top__&-->
+				</tr>
+		</thead>
+		<tbody>
+	<!--%__index_list__%-->
+		<tr>
+			<td class="aC"><!--#__wmm_name_to__#-->←<!--#__wmm_name__#--></td>
+			<td><a href="javascript:;" class="detailLink" data-fancybox data-type="iframe" data-src="<!--#__link_url__#-->"><!--#__wct_subject__#--></a><!--&__is_unread__&--><span class="iconNew">NEW</span><!--&__/is_unread__&-->
+			</td>
+			<td class="aC"><!--#__wct_status_jp__#--></td>
+			<td class="aC"><!--#__wcth_created__#--></td>
+		</tr>
+	<!--%__/index_list__%-->
+		</tbody>
+	</table>
+
+	<!--%__index_list__%-->
+	<table class="contactTbl forSp">
+	<tr><th width="30%">担当者←送信者</th>
+		<td><!--#__wmm_name_to__#-->←<!--#__wmm_name__#--></td></tr>
+	<tr><th>件名</th>
+		<td><a href="<!--#__link_url__#-->" class="detailLink"><!--#__wct_subject__#--></a><!--&__is_unread__&--><span class="iconNew">NEW</span><!--&__/is_unread__&--><!--&__wct_photo__&--> <img src="/img/icon_file.png" alt="添付" width="16"><!--&__/wct_photo__&--></td></tr>
+	<tr><th>進捗</th>
+		<td><!--#__wct_status_jp__#--></td></tr>
+	<tr><th>日時</th>
+		<td><!--#__wcth_created__#--></td></tr>
+	</table>
+	<!--%__/index_list__%-->

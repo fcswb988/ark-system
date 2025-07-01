@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<link rel="stylesheet" type="text/css" href="../system2/css/contents.css" media="screen, print" title="default">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../system2/js/calFunc.js"></script>
+<script type="text/javascript" src="../system2/js/countFunc.js"></script>
+<script type="text/javascript" src="../system2/js/editFunc.js"></script>
+<script type="text/javascript" src="../system2/js/imageFunc.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/submitClass.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<!--&__sys_view__&-->
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <!--#__mfl_title__#--></p>
+<!--&__/sys_view__&-->
+
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+
+		<div id="contentsCol">
+			<h2 class="titleIcon"><!--#__mfl_title__#--></h2>
+			<div class="editBox">
+				<form action="./confirm.php" method="post" enctype="multipart/form-data" class="mainForm">
+<!--#__detail_view__#-->
+					<p class="aC"><input class="button buttonBlue" type="submit" value="確認画面へ" />
+<!--&__sys_view__&-->
+					<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+<!--&__/sys_view__&-->
+					<input type="hidden" name="seq" value="<!--#__mfl_seq__#-->" />
+					<input type="hidden" name="md" value="<!--#__now_mode__#-->" />
+					<input type="hidden" name="main_seq" value="<!--#__main_seq__#-->" />
+					<input type="hidden" name="sub_seq" value="<!--#__sub_seq__#-->" />
+<!--&__iframe_view__&--><input type="hidden" name="view_sys" value="iframe"><!--&__/iframe_view__&--></p>
+
+				</form>
+			</div><!-- /editBox -->
+		</div><!-- /contentsCol -->
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+<!--&__editing_users__&-->
+<div class="editNowAlert">
+	<p>ただいま、<!--#__editing_users__#-->さんが編集中です。</p>
+</div>
+<!--&__/editing_users__&-->
+<div id="calendarWin"></div>
+</body>
+</html>
