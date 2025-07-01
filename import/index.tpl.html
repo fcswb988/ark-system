@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/importClass.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+-->
+</head>
+<body>
+<div id="wrapper">
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <!--#__page_title__#--></p>
+
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+		<div id="contentsCol" >
+			<h2 class="" style="">部品データ</h2>
+			<form name="import_form" action="./" method="post" enctype="multipart/form-data">
+
+			<div style="display:flex; margin-top:1em;">
+				<div class="flex-item">
+					業者：
+					<select name="sel_company">
+						<!--%__companies__%-->
+						<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+						<!--%__/companies__%-->
+					</select>
+					<div id="wdc_list" style="display:flex;">
+					案件：
+					<table class="basicTbl" style="width:605px; border:none; display:inline-block; margin-top:0.5em">
+						<thead>
+						<tr><th style="width:30px">選択</th>
+							<th style="width:200px">顧客</th>
+							<th style="width:150px">車種・車番<br>
+								<div>
+								<input type="text" size="5" name="sk_serch" style="padding: 1px; vertical-align: top;" class="aC" value="<!--#__sk_serch__#-->">
+	<!-- 							<a href="javasclipt:;" onclick="document.import_form.submit();" class="buttonSlim">絞込</a>
+	 -->
+	 								<input type="submit" name="search" class="flex-item buttonSlim" value="絞込">
+								</div>
+							</th>
+							<th style="width:80px">種別</th>
+							<th style="width:60px">入庫日<br>納車予定日</th>
+						</tr>
+						</thead>
+						<tbody class="repairTbody" style=" height:600px;">
+						<!--%__wdc_list__%-->
+						<tr seq="<!--#__wdc_seq__#-->">
+							<td class="aC" style="width:30px;"><input type="radio" name="sel_wdc" value="<!--#__wdc_seq__#-->"></td>
+							<td class="aC" style="width:200px;"><!--&__wcm_company__&--><!--#__wcm_company__#--><br><!--&__/wcm_company__&--><!--#__wcm_name__#--></td>
+							<td class="aC" style="width:150px"><!--&__wmk_name__&--><!--#__wmk_name__#--><!--&__/wmk_name__&--><!--#__wrp_body_type__#--><br><!--#__wrp_regist_number__#--></td>
+							<td class="aC" style="width:80px"><!--#__wdc_type__#--></td>
+							<td class="aC" style="width:60px"><!--#__wdc_storing_date__#--><br><!--#__wdc_delivered_date__#--></td>
+						</tr>
+						<!--%__/wdc_list__%-->
+						</tbody>
+					</table>
+					</div>
+				</div>
+				<div class="flex-item">
+					ファイル：<input type="file" name="data" style="width:400px" accept=".xlsx, .csv" />
+					<div style=" margin-top:0.5em;" id="wpl_date">発注日　：<input type="text" name="wpl_date" value="<!--#__wpl_date__#-->" class="txtsize15 datePicker" /></div>
+				</div>
+				<input type="submit" name="submit" class="flex-item" value="アップロード">
+				<div  class="flex-item" style="width:25%;">
+					<!--&__result__&-->
+					<!--#__result__#-->
+					<a href="<!--#__result_file__#-->" download="<!--#__result_file_name__#-->"><!--#__result_file_name__#--></a>
+					<!--&__/result__&-->
+				</div>
+			</div>
+			</form>
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+<div id="maskFull"></div>
+
+</body>
+</html>
