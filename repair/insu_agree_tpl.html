@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" href="../css/fancybox.min.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/insuAgreeClass.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <!--#__page_title__#--></p>
+
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+
+		<div id="contentsCol">
+			<div class="editBox">
+<!--
+				<form action="./insu_agree.php" method="get">
+					<table>
+					<tr><th width="10%">納車日</th>
+						<td width="45%"><input type="text" name="sk_date_from" value="<!--#__sk_date_from__#-->" class="txtsize15 datePicker"> ～ <input type="text" name="sk_date_to" value="<!--#__sk_date_to__#-->" class="txtsize15 datePicker">　
+							月切：<select id="sk_month" style="margin-right: 2em;">
+							<!--%__sel_month__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/sel_month__%-->
+							</select>
+						</td>
+					</tr>
+					</table>
+					<div style="display: flex; justify-content: center; position: relative;">
+						<p><a href="#" class="parentSubmit button buttonBlue">検索</a></p>
+						<!--&__insu_agree_list__&-->
+						<p style="position: absolute; right: 0;">
+						<a href="#" class="parentSubmit button buttonGreen" id="out_excel">損保協定一覧出力</a>
+						</p>
+						<!--&__/insu_agree_list__&-->
+						<input type="hidden" name="md" value="search">
+					</div>
+				</form>
+ -->
+				<div style="display:flex">
+					<h2 class="documentIcon">損保協定一覧</h2>
+					<form action="./insu_agree.php" method="get" style="margin-left: 5em;">
+						納車日：<input type="text" name="sk_date_from" value="<!--#__sk_date_from__#-->" class="txtsize15 datePicker"> ～ <input type="text" name="sk_date_to" value="<!--#__sk_date_to__#-->" class="txtsize15 datePicker">　
+						月切：<select id="sk_month" style="margin-right: 2em;">
+						<!--%__sel_month__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/sel_month__%-->
+						</select>
+						<a href="#" class="parentSubmit button buttonBlue">検索</a>
+						<!--&__insu_agree_list__&-->
+						<a href="#" class="parentSubmit button buttonGreen" id="out_excel" style="margin-left: 2em;">損保協定一覧出力</a>
+						<!--&__/insu_agree_list__&-->
+						<input type="hidden" name="md" value="search">
+					</form>
+				</div>
+				<!--&__insu_agree_list__&-->
+				<table class="basicTbl" style="width:70%; margin-top:0.5em;">
+				<thead>
+				<tr><th width="4%">見積送信済</th>
+					<th width="15%">お客様</th>
+					<th width="8%">メーカー</th>
+					<th width="10%">車種</th>
+					<th width="6%">登録番号</th>
+					<th width="10%">損保</th>
+					<th width="10%">アジャスター</th>
+					<th width="6%">概算工賃</th>
+					<th width="6%">納品日</th>
+					<th width="6%">請求日</th>
+				</thead>
+				<!--%__insu_agree_list__%-->
+				<tr id="<!--#__wdc_seq__#-->" class="<!--#__bg_class__#-->">
+					<td class="aC">
+						<input class="agree_fg" name="wdc_agree_estimatefg" value="<!--#__wdc_seq__#-->" type="checkbox" <!--&__wdc_agree_estimatefg__&-->checked="checked"<!--&__/wdc_agree_estimatefg__&-->></td>
+					<td class="aL"><!--#__wcm_company__#--></td>
+					<td class="aL"><!--#__wmk_name__#--></td>
+					<td class="aL"><!--#__wrp_body_type__#--></td>
+					<td class="aC"><!--#__wrp_regist_number__#--></td>
+					<td class="aL"><!--#__wdc_insurance__#--></td>
+					<td class="aL"><!--#__wdc_adjuster__#--></td>
+					<td class="aR"><!--#__wdc_rough_amount__#--></td>
+					<td class="aL"><!--#__wdc_delivered_date__#--></td>
+					<td class="aL"><!--#__wdc_billing_date__#--></td>
+				</tr>
+				<!--%__/insu_agree_list__%-->
+				</table>
+				<!--&__!insu_agree_list__&-->
+				<!--&__/insu_agree_list__&-->
+
+			</div><!-- /editBox -->
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/queryClass.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+-->
+</head>
+<body>
+<div id="wrapper">
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <!--#__page_title__#--></p>
+
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+		<div id="contentsCol" >
+			<div class="editBox" style="float: left;">
+				<h2 class="" style="">SQL</h2>
+				<form action="./" method="post" enctype="multipart/form-data">
+				<div style="display:flex; flex-flow: column;">
+					<textarea style="font-size: 12px;" name="txt_sql" cols="120" rows="20"><!--#__sql__#--></textarea>
+					<input type="submit" value="クエリー実行">
+					<div style="margin-top:10px">
+						<!--#__result__#-->
+						<!--&__out_file__&-->
+						<span style="float:right">出力CSV：<a href="<!--#__out_file__#-->" download="<!--#__file_name__#-->"><!--#__file_name__#--></a></span>
+						<!--&__/out_file__&-->
+					</div>
+					<table>
+					<thead>
+						<tr>
+							<!--%__col_names__%--><th class="aC"><!--#__col_name__#--></th><!--%__/col_names__%-->
+						</tr>
+					</thead>
+					<tbody>
+					<!--%__data_list__%-->
+						<tr>
+							<!--%__col_vals__%--><td><!--#__col_val__#--></td><!--%__/col_vals__%-->
+						</tr>
+					<!--%__/data_list__%-->
+					</tbody>
+					</table>
+				</div>
+				<input type="hidden" name="md" value="execute">
+				<input type="hidden" name="enc_sql">
+				</form>
+			</div>
+
+			<div style="float: left; margin-left: 1em; width:45%;">
+				<h2 class="" style="">SQL雛形</h2>
+				<!--%__sql_list__%-->
+					<ul><li><a href="javascript::" class="sel_sql"><!--#__wst_title__#--></a><span style="display: inline-block;" class="txt_sql"><!--#__wst_sql__#--></span></li></ul>
+				<!--%__/sql_list__%-->
+			</div>
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+<div id="maskFull"></div>
+
+</body>
+</html>

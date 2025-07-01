@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+<link rel="stylesheet" href="../css/fancybox.min.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<link rel="stylesheet" type="text/css" href="../css/lightbox.css" media="screen, print" title="default">
+<link rel="stylesheet" type="text/css" href="../system2/css/calendar.css" media="screen, print" title="default">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="../system2/js/editFunc.js"></script>
+<script type="text/javascript" src="../system2/js/imageFunc.js"></script>
+<script type="text/javascript" src="../js/workListClass.js"></script>
+<script type="text/javascript" src="../js/conditionClass.js"></script>
+<script type="text/javascript" src="../js/directEditClass.js"></script>
+<script type="text/javascript" src="../js/invoiceClass_new.js"></script>
+<script type="text/javascript" src="../js/partsListClass.js"></script>
+<script type="text/javascript" src="../js/outScClass.js"></script>
+<script type="text/javascript" src="../js/fileupClass.js"></script>
+<script type="text/javascript" src="../js/extIfClass.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../system2/js/repair.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+</head>
+<body>
+<input id="tax_rate" type="hidden" value="<!--#__tax_rate__#-->">
+<div id="wrapper">
+<!--#__header_html__#-->
+	<!--&__contact_html__&-->
+	<div class="editBox" style="position:absolute;right:0;height: 4em; overflow-y: auto;">
+		<h2 class="infoIcon" style="float: left">
+		<span class="fontSize14"><font color="red">※連絡があります。</font></span>
+		</h2>
+		<!--#__contact_html__#-->
+	</div>
+	<!--&__/contact_html__&-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <a href="/repair/">修理情報管理</a> ＞ <a href="<!--#__back_detail_url__#-->">顧客情報詳細<!--&__view_customer_name__&--> ( <!--#__view_customer_name__#--> )<!--&__/view_customer_name__&--></a> ＞ <!--#__page_title_sub__#--> ( <!--#__wrp_body_type__#--> )</p>
+
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+
+		<div id="contentsCol">
+<!--&__wcm_seq__&-->
+	<!--&__is_open_direct_edit__&-->
+			<p><a class="button buttonGray" href="<!--#__back_detail_url__#-->">顧客情報詳細へ戻る</a>　
+				<a class="button buttonGreen" href="/repair/print.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=parts">注文書<!--#__wdc_parts_stat__#--></a>　
+				<a class="button buttonGreen out_work"  href="/repair/print_new.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=work&keep=true">作業書<!--#__wdc_work_stat__#--></a>　
+				<a class="button buttonGreen" href="/document/?wdc_seq=<!--#__wdc_seq__#-->">書類管理</a>　
+				<a class="button buttonGray" data-fancybox data-type="iframe" href="javascript:;" data-src="/flex/edit.php?seq=23&main_seq=<!--#__wdc_seq__#-->&default=<!--#__default__#-->&view_sys=iframe">表示タイトル編集</a><!--&__wdc_title__&-->カレンダー表示タイトル：<!--#__wdc_title__#-->　<!--&__/wdc_title__&-->　
+				<a class="button buttonBlue" href="/customers/repair.php?view=input&md=update&wcm_seq=<!--#__wcm_seq__#-->&main_seq=<!--#__wrp_seq__#-->&back_seq=<!--#__wdc_seq__#-->">車体情報を編集</a>　
+				<a class="button buttonRed" href="/repair/repair.php?md=insert&wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->">修理情報の新規登録</a>
+				<a style="margin-left:2em" class="buttonMid buttonBlue" href="/invoice_new/detail.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&src=work">見積作成</a>
+				<input id="href_out_work" type="hidden" value="/repair/print_new.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=work&keep=true">
+			</p>
+	<!--&__/is_open_direct_edit__&-->
+			<div class="editBox">
+				<div style="display: flex; align-items: center;">
+				<table class="customer-table">
+				<tr>
+					<th width="5%">名前</th>
+					<td>
+						<select class="customer-select" style="width: calc(80% - 100px); min-width: 150px"><!--#__all_customer_options__#--></select>
+						<button style="padding: 7px" class="button buttonGreen btn-change-customer">顧客を変更</button>
+					</td>
+					<th width="5%">住所</th>
+					<td width="25%" class="address"><!--&__wcm_zipcode__&-->〒<!--#__wcm_zipcode__#--><br><!--&__/wcm_zipcode__&-->
+						<!--#__wcm_pref__#--><!--#__wcm_address__#--><!--&__wcm_building__&--><br><!--#__wcm_building__#--><!--&__/wcm_building__&--></td>
+					<th width="5%">電話番号</th>
+					<td width="10%" class="tel" width="7%"><!--#__wcm_tel__#--></td>
+				</tr>
+				<!--&__wcm_other__&-->
+				<tr class="parent-other">
+					<th>メモ</th>
+					<td colspan="5" class="other"><!--#__wcm_other__#--></td>
+				</tr>
+				<!--&__/wcm_other__&-->
+				</table>
+				<!--&__edit_upside__&-->
+				<div style="margin-left:3em; margin-bottom: 5px; display: table; height:100%">
+					<a class="button buttonMid buttonOrange" style="display: table-cell; vertical-align: middle;" rel="" data-fancybox data-type="iframe" href="javascript:;" data-src="<!--#__edit_upside__#-->">修理情報を編集する</a>　
+					<a class="button buttonMid buttonGray" style="display: table-cell; vertical-align: middle;" href="<!--#__remove_url__#-->">この修理情報を削除</a>　
+					<a class="button buttonMid buttonBlack" id="koguniCopy" style="display: table-cell; vertical-align: middle;" href="javascript:;">コグニ案件情報貼付セット</a>
+				</div>
+				<!--&__/edit_upside__&-->
+				</div>
+			</div><!-- /editBox -->
+<!--&__/wcm_seq__&-->
+			<div class="editBox">
+				<p class="fR" style="display: flex;flex-direction: row; justify-content: space-around; padding: 0 0 0 5px;">
+				<span style="font-size: 12px; writing-mode: vertical-rl; background: #DCDDDD; text-align: center; border: 0.5px solid #aaa;">メモ</span>
+				<textarea style="field-sizing:content; max-width:40em; min-width:10em; min-height:3lh; font-size:12px;" name="wdc_other" cols="30" rows="5"><!--#__wdc_other__#--></textarea>
+				</p>
+				<div style="display: flex;">
+					<table style="width:100%;">
+					<tr style="height:18px !important">
+						<th width="8%">車種</th>
+						<th width="6%">登録番号</th>
+						<th width="6%">車台番号</th>
+						<th width="4%">種別</th>
+						<th width="4%">入庫日</th>
+						<th width="4%">納車日</th>
+						<th width="4%">請求日</th>
+						<th width="4%">入金日</th>
+						<th width="3%">支払い方法</th>
+						<th width="4%">立会日</th>
+						<th width="7%">損保</th>
+						<th width="5%">ｱｼﾞｬｽﾀ</th>
+						<th width="5%">代車</th>
+					</tr>
+					<tr style="height:18px">
+						<td><!--#__wmk_name__#--> <!--#__wrp_body_type__#--> <!--&__wrp_color_jp__&-->(<!--#__wrp_color_jp__#-->)<!--&__/wrp_color_jp__&--></td>
+						<td><!--#__wrp_regist_area__#--> <!--#__wrp_regist_class__#--> <!--#__wrp_regist_hira__#--> <!--#__wrp_regist_number__#--></td>
+						<td><!--#__wrp_chassis_number__#--></td>
+						<td class="aC"><!--#__wdc_type_jp__#--></td>
+						<td class="aC"><!--#__wdc_storing_date__#--></td>
+						<td class="aC"><!--#__wdc_delivered_date__#--></td>
+						<td class="aC"><!--#__wdc_billing_date__#--></td>
+						<td class="aC"><!--#__wdc_deposited__#--></td>
+						<td class="aC"><!--#__wdc_pay_type_jp__#--></td>
+						<td class="aC"><!--#__wdc_witness_date__#--></td>
+						<td><!--#__insurance_company__#--></td>
+						<td><!--#__wdc_adjuster__#--></td>
+						<td><select name="sel_substcar" style="font-size: 12px;">
+							<!--%__substcar_list__%-->
+								<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&--> <!--&__disabled__&-->disabled<!--&__/disabled__&-->><!--#__title__#--></option>
+							<!--%__/substcar_list__%-->
+							</select></td>
+					</tr>
+					</table>
+					<input type="hidden" name="acceptNo" value="<!--#__wdc_insurance_case_num__#-->">
+					<input type="hidden" name="areaName" value="<!--#__wrp_regist_area__#-->">
+					<input type="hidden" name="classNo" value="<!--#__wrp_regist_class__#-->">
+					<input type="hidden" name="purpose" value="<!--#__wrp_regist_hira__#-->">
+					<input type="hidden" name="seqNo" value="<!--#__wrp_regist_number__#-->">
+					<input type="hidden" name="customer" value="<!--#__customer__#-->">
+					<input type="hidden" name="disclaimerPrice" value="<!--#__wdc_deductible__#-->">
+					<input type="hidden" name="warehousingDate" value="<!--#__wdc_storing_date__#-->">
+					<input type="hidden" name="firstRegistYmEra" value="<!--#__firstRegistYmEra__#-->">
+					<input type="hidden" name="firstRegistYear" value="<!--#__firstRegistYear__#-->">
+					<input type="hidden" name="firstRegistMonth" value="<!--#__firstRegistMonth__#-->">
+					<input type="hidden" name="carName" value="<!--#__wmk_name__#-->">
+					<input type="hidden" name="chassisNumber" value="<!--#__wrp_chassis_number__#-->">
+					<input type="hidden" name="typeName" value="<!--#__wrp_format_body__#-->">
+					<input type="hidden" name="typeSpecifiedNo" value="<!--#__wrp_format_number__#-->">
+					<input type="hidden" name="classDivNo" value="<!--#__wrp_type_number__#-->">
+					<input type="hidden" name="storing_date" value="<!--#__wdc_storing_date__#-->">
+					<input type="hidden" name="delivered_date" value="<!--#__wdc_delivered_date__#-->">
+					<input type="hidden" name="substcar_wdc_title" value="<!--#__substcar_wdc_title__#-->">
+
+				</div>
+<!--&__is_open_direct_edit__&-->
+				<h2 class="repairIcon">作業詳細</h2>
+				<div style="display:flex;">
+					<div id="work" style="display:table-cell; <!--&__bill_list__&-->width:73%;<!--&__!bill_list__&--> width:100%;<!--&__/bill_list__&-->">
+	<!-- [[作業内容]] -->
+					<h2>作業内容 <a class="addRow" href="javascript:;"><img src="../img/icon2_plus.png" alt=""></a></h2>
+					<div style="display:flex;">
+					<p>
+						<a href="javascript:;" class="worksViewCheck">全て表示</a> / <a href="javascript:;" class="worksViewRemove">全て解除</a>
+<!--
+						<a class="buttonMini buttonRed workListAdd" style="margin-left: 100px" data-add-multi="vehicle-inspection-items" data-fancybox data-type="iframe" href="javascript:;" data-src="<!--#__work_add__#-->&add_multi=vehicle_inspection_items">車検項目</a>
+						<a class="buttonMini buttonRed workListAdd" style="margin-left: 10px" data-add-multi="12-months-inspection-items" data-fancybox data-type="iframe" href="javascript:;" data-src="<!--#__work_add__#-->&add_multi=12_months_inspection_items">１２か月点検項目</a>
+ 						<a class="buttonMini buttonRed add_inspection_24" style="margin-left: 100px">車検項目</a>
+						<a class="buttonMini buttonRed add_inspection_12" style="margin-left: 10px">１２か月点検項目</a>
+-->
+						<a class="buttonMini buttonRed open_pop_work" style="margin-left: 30px">定型項目選択</a>
+					</p>
+					<p style="margin-left: auto;">概算工賃：<input type="text" name="wdc_rough_amount" maxlength="4" value="<!--#__wdc_rough_amount__#-->" class=" txtsize10 imeoff aR"/>(単位：万円)</p>
+					</div>
+					<table class="workList addList">
+						<thead>
+							<tr><th>作業内容</th>
+	<!--
+								<th width="6%">数量</th>
+								<th width="6%">単位</th>
+								<th width="10%">単価</th>
+								<th width="10%">部品代</th>
+								<th width="10%">技術料</th>
+								<th width="10%">小計</th>
+	 -->
+								<th width="21%" colspan="3">編集</th></tr>
+						</thead>
+						<tbody class="tbodyWorkListAdd">
+	<!--%__work_list__%-->
+							<tr class="<!--&__wwl_is_open__&-->openData<!--&__/wwl_is_open__&-->" rel="<!--#__wwl_seq__#-->">
+								<td class="aL work-content" style="text-align: center">
+									<div style="display: flex;align-items: center;gap: 10px;">
+										<input class="worksViewSelect" name="wwl_is_open" value="<!--#__wwl_seq__#-->" type="checkbox" <!--&__wwl_is_open__&-->checked="checked"<!--&__/wwl_is_open__&-->>
+										<input type="text" name="txt_wwl_title" value="<!--#__wwl_title__#-->" id="input_wwl_title" class="txtsize70 imeon">
+									</div>
+								</td>
+	<!--
+								<td width="6%" class="aR hidden">
+									<input type="text" name="txt_wwl_amount" value="<!--#__wwl_amount__#-->" id="input_wwl_amount" class=" txtsize10 imeoff aR">
+								</td>
+								<td width="6%" class="hidden">
+									<select name="wwl_unit" id="input_wwl_unit">
+										<!--%__units__%-->
+										<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+										<!--%__/units__%-->
+									</select>
+								</td>
+								<td width="10%" class="unit-price aR hidden">
+									<input type="text" name="txt_wwl_u_price" value="<!--#__wwl_u_price__#-->" id="input_wwl_u_price" class=" txtsize10 imeoff aR">
+								</td>
+								<td width="10%" class="part-generation aR hidden">
+									<input type="text" name="txt_wwl_p_price" value="<!--#__wwl_p_price__#-->" id="input_wwl_p_price" class=" txtsize10 imeoff aR">
+								</td>
+								<td width="10%" class="technical-fee aR hidden">
+									<input type="text" name="txt_wwl_w_price" value="<!--#__wwl_w_price__#-->" id="input_wwl_w_price" class=" txtsize10 imeoff aR" style="width: 70%;">
+								</td>
+								<td class="workLineSum aR hidden"><!--&__sum_price__&--><!--#__sum_price__#--><!--&__/sum_price__&--></td>
+	 -->
+								<td width="7%">
+									<input type="hidden" name="wwl_seq" value="<!--#__wwl_seq__#-->">
+									<a class="button buttonMini updateRow" href="javascript:;">保存</a>
+									<input type="hidden" name="mfl_seq" value="21">
+								</td>
+								<td width="7%"><a class="button buttonMini copyRow" href="javascript:;">複製</a></td>
+								<td width="7%"><a class="button buttonMini delRow" href="javascript:;">削除</a></td></tr>
+	<!--%__/work_list__%-->
+						</tbody>
+						<tfoot class="hidden">
+							<tr><th colspan="4" class="aR">合計</th>
+								<th class="total-parts-fee aR" rel="sum_p_price" ><!--&__work_sum_p_price__&--><!--#__work_sum_p_price__#--><!--&__/work_sum_p_price__&--></th>
+								<th class="total-technical-fee aR" rel="sum_w_price"><!--&__work_sum_w_price__&--><!--#__work_sum_w_price__#--><!--&__/work_sum_w_price__&--></th>
+								<th class="total-all-works-list aR" rel="sum_price" >整備費用合計：<var><!--&__work_sum_price__&--><!--#__work_sum_price__#--><!--&__/work_sum_price__&--></var></th>
+								<th colspan="3" class="total-tax aL">税：<var></var></th>
+							</tr>
+						</tfoot>
+					</table>
+					<div class="hidden">
+	  				<table id="tableExpenses" style="table-layout: fixed;">
+	  					<tr>
+							<th>重量税</th><th>自賠責</th><th>印紙代</th><th>車検代行費</th><th>諸費用消費税</th>
+	  					</tr>
+	  					<tr>
+							<td class="aR">
+								<input type="text" name="txt_wdc_weight_tax" value="<!--#__wdc_weight_tax__#-->" class=" txtsize15 imeoff aR">
+							</td>
+							<td class="aR">
+								<input type="text" name="txt_wdc_liability_insurance" value="<!--#__wdc_liability_insurance__#-->" class=" txtsize15 imeoff aR">
+							</td>
+							<td class="aR">
+								<input type="text" name="txt_wdc_stamp_tax" value="<!--#__wdc_stamp_tax__#-->" class=" txtsize15 imeoff aR">
+							</td>
+							<td class="aR">
+								<input type="text" name="txt_wdc_inspection_fee" value="<!--#__wdc_inspection_fee__#-->" class=" txtsize15 imeoff aR">
+							</td>
+							<td class="tax-inspection aR"></td>
+	  					</tr>
+	  				</table>
+	  				<table id="tableSum" style="table-layout: fixed; margin-left:100px; width:60%">
+	  					<tr>
+							<th>整備費用合計</th><th>諸費用合計</th><th><b>総合計</b></th>
+	  					</tr>
+	  					<tr>
+							<td class="total-maintenance aR"><!--#__total-maintenance__#--></td>
+							<td class="total-expenses aR"><!--#__total-expenses__#--></td>
+							<td class="total-all aR bold"><!--#__total-all__#--></td>
+	  					</tr>
+	  				</table>
+					</div>
+					<input type="hidden" name="wdc_weight_tax" value="<!--#__wdc_weight_tax__#-->" />
+					<input type="hidden" name="wdc_liability_insurance" value="<!--#__wdc_liability_insurance__#-->" />
+					<input type="hidden" name="wdc_stamp_tax" value="<!--#__wdc_stamp_tax__#-->" />
+					<input type="hidden" name="wdc_inspection_fee" value="<!--#__wdc_inspection_fee__#-->" />
+					<div id="template" class="hidden">
+						<select name="wwl_unit">
+							<!--%__units__%-->
+							<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+							<!--%__/units__%-->
+						</select>
+					</div>
+	<!-- /[[作業内容]] -->
+					</div>
+	<!--&__bill_list__&-->
+					<div style="display:table-cell; padding-left:1em; width:25%; vertical-align: top; padding-top: 33px;">
+						<div style="float: left">
+						<h2>見積明細</h2>
+		  				</div>
+		  				<table id="tableWorkSubList">
+							<tr>
+								<th>見積内容</th>
+								<th>
+									作業内容へ<br><a class="buttonSlim buttonBlue copy_all_detail">全てコピー</a>
+								</th>
+							</tr>
+							<tbody id="tbodyWorkSubList">
+		<!--%__bill_list__%-->
+							<tr>
+								<td class="wbl_title"><!--#__wbl_title__#--></td>
+								<td class="aC"><a class="buttonSlim buttonBlue copy_detail" style="">コピー</a></td>
+							</tr>
+		<!--%__/bill_list__%-->
+							</tbody>
+		  				</table>
+					</div>
+	<!--&__/bill_list__&-->
+				</div>
+<!-- [[部品発注]] -->
+				<h2>部品発注 <a class="partsListAdd partAdd" href="javascript:;"><img src="../img/icon2_plus.png" alt=""></a></h2>
+				<p><a href="javascript:;" id="partsDelSelect">選択行を削除</a></p>
+				<table class="partsList addList">
+					<thead>
+						<tr><th width="2%"><input id="partsSelectAll" type="checkbox" ></th>
+							<th width="4%">購入者</th>
+							<th width="7%">業者</th>
+							<th width="8%">発注日</th>
+							<th width="10%">品番</th>
+							<th width="20%">名称</th>
+							<th width="3%">到着日数</th>
+							<th width="5%">必要工程</th>
+							<th width="4%">個数</th>
+							<th width="5%">定価</th>
+							<th width="5%">仕入値</th>
+							<th width="4%">定価計</th>
+							<th width="4%">仕入値計</th>
+							<th width="17%">編集</th></tr>
+					</thead>
+					<tbody id="tbodyPartsList">
+<!--%__parts_list__%-->
+						<tr class="<!--&__wpl_is_open__&-->openData<!--&__/wpl_is_open__&-->">
+							<td><input class="sel_row" name="partsSelect" type="checkbox" >
+								<input type="hidden" class="rowNo" name="rowNo" value="<!--#__rowNo__#-->" >
+							</td>
+							<td class="td_purchaser_type">
+								<select class="wpl_purchaser_type" name="wpl_purchaser_type">
+									<!--%__purchaser_types__%-->
+									<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+									<!--%__/purchaser_types__%-->
+								</select>
+							</td>
+							<td class="td_company_seq">
+								<select class="wpl_company_seq" name="wpl_company_seq">
+									<!--%__companies__%-->
+									<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+									<!--%__/companies__%-->
+								</select>
+							</td>
+							<td>
+								<div  style="display: flex; align-items:center">
+								<input type="text" name="txt_wpl_date" value="<!--#__wpl_date__#-->" class="txtsize10 datePicker">
+								</div>
+							</td>
+							<td class="wpl-number">
+								<input type="text" name="txt_wpl_number" value="<!--#__wpl_number__#-->" id="input_wpl_number" class=" txtsize30 imeoff">
+							</td>
+							<td class="wpl-name" class="aL" style="text-align: center">
+								<input type="text" name="txt_wpl_name" value="<!--#__wpl_name__#-->" id="input_wpl_name" class=" txtsize70 imeon">
+							</td>
+							<td>
+								<input type="text" name="txt_wpl_days" value="<!--#__wpl_days__#-->" id="input_wpl_days" class=" txtsize5 imeon aR">
+							</td>
+							<td class="td_required_proc">
+								<select class="wpl_required_proc" name="wpl_required_proc">
+									<!--%__required_procs__%-->
+									<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+									<!--%__/required_procs__%-->
+								</select>
+							</td>
+							<td>
+								<input type="text" name="txt_wpl_amount" value="<!--#__wpl_amount__#-->" id="input_wpl_amount" class=" txtsize5 imeoff aR" autocomplete="off">
+							</td>
+							<td class="wpl-base-price">
+								<input type="text" name="txt_wpl_base_price" value="<!--#__wpl_base_price__#-->" id="input_wpl_base_price" class=" txtsize10 imeon aR">
+							</td>
+							<td class="wpl-price">
+								<input type="text" name="txt_wpl_price" value="<!--#__wpl_price__#-->" id="input_wpl_price" class=" txtsize10 imeon aR">
+							</td>
+							<td class="sumBasePrice aR"></td>
+							<td class="sumPrice aR"></td>
+							<td>
+								<a class="button buttonMini updatePartsList" href="javascript:;">保存</a>　
+								<input type="hidden" name="wpl_seq" value="<!--#__wpl_seq__#-->">
+								<a class="button buttonMini copyPartsList" href="javascript:;">複製</a>　
+								<a class="button buttonMini delPartsList" href="javascript:;">削除</a>
+							</td>
+<!--%__/parts_list__%-->
+					</tbody>
+					<tfoot>
+						<tr><th class="aL" colspan="2"><a class="partsListAdd partAdd" href="javascript:;"><img src="../img/icon2_plus.png" alt=""></a>
+							</th>
+							<th class="aR">業者別合計</th>
+							<th colspan="5">
+								<div class="companySum" style="display: flex;">
+								</div>
+							</th>
+							<th class="partsAmountSum aR"></th>
+							<th></th>
+							<th></th>
+							<th class="partsBasePriceSum aR"><!--&__parts_base_price_sum__&--><!--#__parts_base_price_sum__#--><!--&__/parts_base_price_sum__&--></th>
+							<th class="partsPriceSum aR"><!--&__parts_sum_price__&--><!--#__parts_sum_price__#--><!--&__/parts_sum_price__&--></th>
+							<th colspan="3">&nbsp;</th></tr>
+					</tfoot>
+				</table>
+				<div id="template_parts" class="hidden">
+					<select name="wpl_company_seq">
+						<!--%__companies__%-->
+						<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+						<!--%__/companies__%-->
+					</select>
+					<select name="wpl_required_proc">
+						<!--%__required_procs__%-->
+						<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+						<!--%__/required_procs__%-->
+					</select>
+					<select name="wpl_purchaser_type">
+						<!--%__purchaser_types__%-->
+						<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+						<!--%__/purchaser_types__%-->
+					</select>
+				</div>
+<!-- /[[部品発注]] -->
+
+<!-- [[外注作業]] -->
+				<div id="outSc">
+				<h2>外注作業 <a class="addRow" href="javascript:;" ><img src="../img/icon2_plus.png" alt=""></a></h2>
+				<p><a href="javascript:;" class="delSelRow">選択行を削除</a></p>
+				<table class="outscList addList">
+					<thead>
+						<tr><th width="2%"><input class="selRowAll" type="checkbox" ></th>
+							<th width="35%">作業内容</th>
+							<th width="40%">外注業者</th>
+							<th width="5%">日数</th>
+							<th width="7%">金額</th>
+							<th width="15%">編集</th></tr>
+					</thead>
+					<tbody>
+<!--%__outsc_list__%-->
+						<tr rel="<!--#__wol_seq__#-->">
+							<td><input class="selRow" type="checkbox" >
+								<input type="hidden" class="rowNo" name="rowNo" value="<!--#__rowNo__#-->" >
+							</td>
+							<td class="aL"><input type="text" name="wol_title" value="<!--#__wol_title__#-->" style="width:95%"></td>
+							<td class="company aL">
+								<select class="wpl_company_seq" name="sel_wol_wcpseq">
+									<!--%__companies__%-->
+									<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+									<!--%__/companies__%-->
+								</select>
+								　その他 <input type="text" name="wol_outsc" value="<!--#__wol_outsc__#-->" style="width:40%">
+							</td>
+							<td class="aR"><input type="text" name="wol_days" value="<!--#__wol_days__#-->" class=" txtsize5 imeoff aR"></td>
+							<td class="aR"><input type="text" name="wol_price" value="<!--#__wol_price__#-->"class=" txtsize10 imeoff aR"></td>
+							<td>
+								<input type="hidden" name="wol_seq" value="<!--#__wol_seq__#-->">
+								<a class="button buttonMini updateRow" href="javascript:;" style="display:none">保存</a>
+								<a class="button buttonMini copyRow" href="javascript:;">複製</a>
+								<a class="button buttonMini delRow" href="javascript:;">削除</a>
+							</td>
+						</tr>
+<!--%__/outsc_list__%-->
+					</tbody>
+					<tfoot>
+						<tr><th colspan="3" class="aR">合計</th>
+							<th class="outscListSum aR" rel="sum_days"><!--&__outsc_sum_days__&--><!--#__outsc_sum_days__#-->日<!--&__/outsc_sum_days__&--></th>
+							<th class="outscPriceSum aR" rel="sum_price"><!--&__outsc_sum_price__&--><!--#__outsc_sum_price__#--><!--&__/outsc_sum_price__&--></th>
+							<th>&nbsp;</th></tr>
+					</tfoot>
+				</table>
+				<div id="company_template" class="hidden">
+					<select name="sel_wol_wcpseq">
+						<!--%__companies_outsc__%-->
+						<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+						<!--%__/companies_outsc__%-->
+					</select>
+				</div>
+				</div>
+<!-- /[[外注作業]] -->
+<p class="hidden"><input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->">
+	<input type="hidden" name="wdc_pay_type" value="<!--#__wdc_pay_type__#-->">
+</p>
+<!--&__/is_open_direct_edit__&-->
+<!--&__list_condition__&-->
+				<p class="aC">
+				<!--&__custom_link__&--><a class="button buttonRed" href="<!--#__custom_link__#-->">お客様情報を登録する</a><!--&__/custom_link__&-->
+				</p>
+				<p class="fR">
+				<a class="button buttonRed" href="/repair/condition.php?view=input&md=insert&wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->">進捗・状況を追加登録する</a></p>
+				<h2 class="repairIcon"><!--#__mode_title__#--></h2><p class="fR"><div style="max-width:260px;"><!--#__wdc_status__#--></div></p>
+
+<!--&__!list_condition__&-->
+<!--&__view_index__&-->
+				<p class="aC"><a class="button buttonRed" href="/repair/condition.php?view=input&md=insert&wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->">進捗・状況を追加登録する</a>
+				<!--&__custom_link__&--><a class="button buttonRed" href="<!--#__custom_link__#-->">お客様情報を登録する</a><!--&__/custom_link__&--></p>
+<!--&__!view_index__&-->
+				<h2 class="repairIcon">進捗・状況の登録</h2>
+<!--&__/view_index__&-->
+<!--&__/list_condition__&-->
+<!--&__view_input__&-->
+				<form action="./condition.php" method="post" class="inputView" enctype="multipart/form-data">
+					<!--#__detail_view__#-->
+					<p class="pF"><input class="button buttonBlue" type="submit" value="登録する" />
+					<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+					<input type="hidden" name="seq" value="<!--#__mfl_seq__#-->" />
+					<input type="hidden" name="md" value="<!--#__now_mode__#-->" />
+					<input type="hidden" name="main_seq" value="<!--#__main_seq__#-->" />
+					<input type="hidden" name="sub_seq" value="<!--#__sub_seq__#-->" />
+
+					<input type="hidden" name="view" value="finish" />
+					<input type="hidden" name="wcm_seq" value="<!--#__wcm_seq__#-->" />
+					<input type="hidden" name="wrp_seq" value="<!--#__wrp_seq__#-->" />
+					<input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->" /></p>
+				</form>
+<!--&__/view_input__&-->
+<!--&__view_confirm__&-->
+				<form action="./condition.php" method="post" class="confView">
+					<!--#__detail_view__#-->
+<!--&__is_update_view__&-->
+					<p class="aC"><!--&__submit_btn__&--><input class="button buttonBlue" type="submit" value="情報更新" /> <!--&__/submit_btn__&-->
+					<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+<!--&__/is_update_view__&-->
+<!--&__is_insert_view__&-->
+					<p class="aC"><!--&__submit_btn__&--><input class="button buttonBlue" type="submit" value="追加登録" /> <!--&__/submit_btn__&-->
+					<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+<!--&__/is_insert_view__&-->
+<!--&__is_delete_view__&-->
+					<p class="aC">上記登録情報の削除を行います。よろしいですか？</p>
+					<p class="aC mb30"><input class="button buttonBlue" type="submit" value="削除実行" />
+					<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+<!--&__/is_delete_view__&-->
+					<input type="hidden" name="seq" value="<!--#__mfl_seq__#-->" />
+					<input type="hidden" name="md" value="<!--#__now_mode__#-->" />
+					<input type="hidden" name="main_seq" value="<!--#__main_seq__#-->" />
+					<input type="hidden" name="sub_seq" value="<!--#__sub_seq__#-->" />
+
+					<input type="hidden" name="view" value="finish" />
+					<input type="hidden" name="wcm_seq" value="<!--#__wcm_seq__#-->" />
+					<input type="hidden" name="wrp_seq" value="<!--#__wrp_seq__#-->" />
+					<input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->" /></p>
+				</form>
+<!--&__/view_confirm__&-->
+<!--&__list_condition__&-->
+<!--%__list_condition__%-->
+<div class="repairList" <!--&__wcd_level_label__&-->id="<!--#__wcd_level_label__#-->"<!--&__/wcd_level_label__&-->>
+<p class="ctrls"><a href="<!--#__edit_url__#-->" class="w30 buttonMini buttonBlue">進捗・状況を編集</a>
+	<a href="<!--#__remove_url__#-->" class="w30 buttonMini">進捗・状況を削除</a></p>
+<dl>
+	<dt><!--#__wcd_level__#-->
+		<span><!--#__wcd_created__#--></span><!--#__wcd_kind__#-->／<!--#__wcd_region__#--></dt>
+	<dd><!--#__wcd_condition__#--></dd>
+</dl>
+
+<ul class="repairPhotos" data-wcd_seq="<!--#__wcd_seq__#-->">
+	<!--%__photo_list__%-->
+	<li <!--&__photo_fcs__&-->class="fcs"<!--&__/photo_fcs__&-->><a href="<!--#__photo_url__#-->"  download="<!--#__download__#-->" <!--&__photo_unit__&-->data-lightbox="<!--#__photo_unit__#-->"<!--&__/photo_unit__&-->><img src="<!--#__photo_th_url__#-->" alt=""><p><!--#__title__#--></p></a></li>
+	<!--%__/photo_list__%-->
+</ul>
+
+</div><!-- /repairList -->
+<!--%__/list_condition__%-->
+<!--
+ 	<p class="aC"><a class="button buttonBlue" href="<!--#__edit_directions__#-->">修理情報を編集</a><!--&__custom_link__&--> <a class="button buttonRed" href="<!--#__custom_link__#-->">お客様情報を登録する</a><!--&__/custom_link__&--></p>
+-->
+	<h2>作業費及び重要度</h2>
+	<table class="directionsTable">
+		<tr><th width="25%">作業費</th>
+			<td rel="wdc_price"><!--&__wdc_price__&--><!--#__wdc_price__#-->円<!--&__/wdc_price__&--></td></tr>
+		<tr><th>重要度</th>
+			<td><span class="rep" rel="wdc_important"><!--#__wdc_important__#-->/5</span>
+				<span class="rep" rel="wdc_imp_reason"><!--&__wdc_imp_reason__&-->／理由：<!--#__wdc_imp_reason__#--><!--&__/wdc_imp_reason__&--></span></td></tr>
+	</table>
+	<h2>その他チェック項目</h2>
+	<table class="directionsTable">
+		<tr><th width="25%">コーティング施工証明</th>
+			<td><span class="rep" rel="wdc_cording"><!--#__wdc_cording__#--></span>
+				<span class="rep" rel="wdc_cording_file"><!--&__wdc_cording_file__&-->／<a href="<!--#__wdc_cording_file__#-->" target="_blank">ダウンロード</a><!--&__/wdc_cording_file__&--></span></td></tr>
+		<tr><th>代車</th>
+			<td><span class="rep" rel="wdc_sub_car"><!--#__wdc_sub_car__#--></span></td></tr>
+		<tr><th>ETCカード</th>
+			<td><span class="checkPoint">抜き忘れ、返却忘れはありませんか？</span><span class="rep" rel="wdc_chk_etc"><!--#__wdc_chk_etc__#--></span></td></tr>
+		<tr><th>パワーウインドウ動作状態</th>
+			<td><span class="checkPoint">正しく動作していますか？</span><span class="rep" rel="wdc_chk_window"><!--#__wdc_chk_window__#--></span></td></tr>
+		<tr><th>ナビ・オーディオ動作状態</th>
+			<td><span class="checkPoint">正しく動作していますか？</span><span class="rep" rel="wdc_chk_audio"><!--#__wdc_chk_audio__#--></span></td></tr>
+		<tr><th>ライト点灯状況</th>
+			<td><span class="checkPoint">正しく動作していますか？</span><span class="rep" rel="wdc_chk_light"><!--#__wdc_chk_light__#--></span></td></tr>
+		<tr><th>高額積載物</th>
+			<td><span class="checkPoint">貴重品は車内に置かれていませんか？</span><span class="rep" rel="wdc_chk_loading"><!--#__wdc_chk_loading__#--></span></td></tr>
+		<tr><th>作業内容・チェック項目に同意</th>
+			<td><span class="checkPoint">&nbsp;</span><span class="rep" rel="wdc_chk_agree"><!--#__wdc_chk_agree__#--></span></td></tr>
+		<tr><th>その他</th>
+			<td rel="wdc_other"><!--#__wdc_other__#--></td></tr>
+	</table>
+	<p class="aC"><a class="button buttonMid buttonBlue" data-fancybox data-type="iframe" href="javascript:;" data-src="<!--#__edit_btmside__#-->">編集する</a></p>
+	<p class="hidden"><input type="hidden" name="wrp_seq" value="<!--#__wrp_seq__#-->"><input type="hidden" name="wdc_seq" value="<!--#__wdc_seq__#-->"></p>
+
+<!--&__/list_condition__&-->
+			</div><!-- /editBox -->
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+<!--&__editing_users__&-->
+<div class="editNowAlert">
+	<p>ただいま、<!--#__editing_users__#-->さんが編集中です。</p>
+</div>
+<!--&__/editing_users__&-->
+<script type="text/javascript" src="../js/lightbox.min.js"></script>
+<div id="calendarWin"></div>
+<div id="snackbar">Some text some message..</div>
+
+<div id="addWorkWindow">
+	<div class="inner">
+		<p class="closeButton"><a href="javascript:;" class="close">× CLOSE</a></p>
+		<div class="editBox">
+			<h2>作業内容選択</h2>
+			<form action="./" method="post">
+			<div style="display:flex;">
+				<div style="display:table-cell; padding-left:1em; width:40%; vertical-align: top; padding-top: 10px;">
+					<h2>作業種別</h2>
+	  				<table id="tableWorkClass">
+					<tr><th>作業種別</th>	</tr>
+					<tbody id="tbodyWorkClass">
+					</tbody>
+	  				</table>
+				</div>
+				<div style="display:table-cell; padding-left:2em; width:50%; vertical-align: top; padding-top: 10px;">
+					<h2>作業内容</h2>
+	  				<table id="tableWorkItem">
+					<tr><th>作業内容</th>	</tr>
+					<tbody id="tbodyWorkItem">
+					</tbody>
+	  				</table>
+				</div>
+			</div>
+			<ul class="btnButtons">
+				<li><a class="button buttonBlue select" href="javascript:;">選択</a></li>
+			</ul>
+			</form>
+		</div>
+	</div>
+</div><!-- /addWorkWindow -->
+
+<div id="maskFull"></div>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" href="../css/fancybox.min.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/directEditClass.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <!--#__page_title__#--></p>
+
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+
+		<div id="contentsCol">
+			<h2 class="repairIcon"><!--#__page_title_sub__#--></h2>
+			<div class="editBox">
+				<form action="./" method="get">
+					<table>
+					<tr><th width="10%">表示順</th>
+						<td width="40%"><select name="sk_sort">
+							<!--%__list_sort__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_sort__%-->
+							</select></td>
+						<th width="10%">カテゴリー</th>
+						<td width="40%" colspan="3"><select name="sk_client"><option value="">▽選択▽</option>
+							<!--%__list_cat__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_cat__%-->
+							</select></td></tr>
+					<tr><th>クライアント</th>
+						<td><div class="mb5"><select name="sk_client"><option value="">▽選択▽</option>
+						<!--%__list_client__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_client__%--></select></div>
+						<div>又は <input type="text" name="sk_client_txt" value="<!--#__sk_client_txt__#-->" class="w70"></div></td>
+						<th>一般顧客</th>
+						<td colspan="3"><div class="mb5"><select name="sk_name"><option value="">▽選択▽</option>
+						<!--%__list_name__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_name__%--></select></div>
+						<div>又は <input type="text" name="sk_name_txt" value="<!--#__sk_name_txt__#-->" class="w70"></div></td></tr>
+					<tr><th>登録番号(下4桁)</th>
+						<td><input type="text" name="sk_r_number" value="<!--#__sk_r_number__#-->"></td>
+						<th>車台番号</th>
+						<td colspan="3"><input type="text" name="sk_c_number" value="<!--#__sk_c_number__#-->"></td></tr>
+					<tr><th>メーカー・車種</th>
+						<td><select name="sk_maker"><option value="">▽選択▽</option>
+						<!--%__list_maker__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_maker__%--></select>
+						<input type="text" name="sk_body_type_txt" value="<!--#__sk_body_type_txt__#-->" class="w50">
+<!--
+						<select name="sk_body_type"><option value="">▽選択▽</option>
+						<!--%__list_body_type__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_body_type__%--></select>
+-->
+						</td>
+						<th>担当者</th>
+						<td colspan="3"><select name="sk_staff"><option value="">▽選択▽</option>
+						<!--%__list_staff__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_staff__%--></select></td></tr>
+					<tr>
+						<th>作業内容</th>
+						<td>
+							<input type="text" name="sk_work_txt" value="<!--#__sk_work_txt__#-->" class="w70">
+						</td>
+						<th>損保</th>
+						<td width="20%">
+							<input type="text" name="wdc_insurance" value="<!--#__wdc_insurance__#-->" class="w70">
+						</td>
+						<th>協定金額</th>
+						<td>
+							<input type="number" name="wdc_agree_price_min" value="<!--#__wdc_agree_price_min__#-->" class="w20">円 ～
+							<input type="number" name="wdc_agree_price_max" value="<!--#__wdc_agree_price_max__#-->" class="w20">円
+						</td>
+					</tr>
+					</table>
+					<p class="aC"><a href="#" class="parentSubmit button buttonBlue">検索</a>
+						<input type="hidden" name="md" value="search"></p>
+				</form>
+
+				<!--&__search_view__&-->
+				<h2 class="repairIcon">修理履歴</h2>
+				<!--&__list_index__&-->
+				<!--%__list_index__%-->
+				<table>
+				<tr><td width="140" rowspan="2" class="photo"><!--&__photo_url__&--><img class="condPhoto" src="<!--#__photo_url__#-->" alt=""><!--&__!photo_url__&-->&nbsp;<!--&__/photo_url__&--></td>
+					<th width="10%">車種</th>
+					<td width="27%"><!--#__wmk_name__#--> <!--#__wrp_body_type__#--></td>
+					<th width="10%">カラー</th>
+					<td width="10%"><!--#__wrp_color_jp__#--></td>
+					<th>登録番号</th>
+					<td><!--#__wrp_regist_area__#--> <!--#__wrp_regist_class__#--> <!--#__wrp_regist_hira__#--> <!--#__wrp_regist_number__#--></td>
+	<!--
+					<th width="10%">重要度</th>
+					<td width="24%"><img src="../img/icon_imp<!--#__wdc_important__#-->.png" alt="" width="50%"></td>
+	-->
+					<td rowspan="2" width="14%" class="aC">
+						<a href="<!--#__detail_url__#-->" class="buttonMini buttonBlue mb5 w80">作業詳細と進捗・状況</a><br>
+						<a data-fancybox="" data-type="iframe" href="javascript:;" data-src="<!--#__edit_url__#-->" class="mb5 w80 buttonMini buttonOrange">修理情報を編集</a><br>
+						<a href="javascript:;" class="buttonMini w80 removeRepair" data-name="<!--#__wrp_body_type__#-->" data-regist="<!--#__wdc_delivered_date__#-->" rel="wcm_seq=<!--#__wdc_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->">削　　除</a>
+
+					</td></tr>
+				<tr><th>状態</th>
+					<td><!--#__wdc_status__#--></td>
+					<th width="10%">種別</th>
+					<td width="10%"><!--#__wdc_type_jp__#--></td>
+					<th width="10%">納車日</th>
+					<td width="10%"><!--#__wdc_delivered_date__#--></td></tr>
+				</table>
+				<!--%__/list_index__%-->
+				<!--&__!list_index__&-->
+				<p class="aC">検索結果がありませんでした。</p>
+				<!--&__/list_index__&-->
+
+				<!--&__page_list__&-->
+				<ul class="pageSend">
+				<!--%__page_list__%-->
+				<li><!--&__link_url__&--><a href="<!--#__link_url__#-->"><!--#__link_txt__#--></a><!--&__!link_url__&--><span><!--#__link_txt__#--></span><!--&__/link_url__&--></li>
+				<!--%__/page_list__%-->
+				</ul>
+				<!--&__/page_list__&-->
+
+				<!--&__/search_view__&-->
+			</div><!-- /editBox -->
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+<div class="confirmWindow">
+	<p>こちらの修理を削除して<br>よろしいですか？</p>
+	<dl>
+		<dt>車種：</dt>
+		<dd class="carName">ロードスター</dd>
+		<dt>納車予定日：</dt>
+		<dd class="registDate">2020-11-11</dd>
+	</dl>
+	<ul>
+		<li><a href="javascript:;" class="removeActionButton">削除する</a></li>
+		<li><a href="javascript:;" class="removeCancelButton">キャンセル</a></li>
+	</ul>
+</div><!-- /confirmWindow -->
+<div id="maskFull"></div>
+
+</body>
+</html>
