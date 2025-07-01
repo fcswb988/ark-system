@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+
+<link rel="stylesheet" href="../css/fancybox.min.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/invoiceClass.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <!--#__page_title__#--></p>
+
+	<div id="container">
+		<div id="sidebarCol">
+			<!--#__sub_navigation__#-->
+		</div><!-- /sidebarCol -->
+
+		<div id="contentsCol">
+			<h2 class="documentIcon"><!--#__page_title_sub__#--></h2>
+			<div class="editBox">
+				<form action="./" method="get">
+					<table>
+					<tr><th width="10%">請求日（納車日）</th>
+						<td width="45%"><input type="text" name="sk_date_from" value="<!--#__sk_date_from__#-->" class="txtsize15 datePicker"> ～ <input type="text" name="sk_date_to" value="<!--#__sk_date_to__#-->" class="txtsize15 datePicker">　
+							月切：<select id="sk_month" style="margin-right: 2em;">
+							<!--%__sel_month__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/sel_month__%-->
+							</select>
+							<label for="making" class="fontSize14"><input type="checkbox" id="making" name="sk_making" <!--&__sk_making__&-->checked="checked"<!--&__/sk_making__&-->> 作成中</label>　
+							<label for="estimate" class="fontSize14"><input type="checkbox" id="estimate" name="sk_estimate"  <!--&__sk_estimate__&-->checked="checked"<!--&__/sk_estimate__&-->> 見積書済</label>　
+							<label for="billing" class="fontSize14"><input type="checkbox" id="billing" name="sk_billing"  <!--&__sk_billing__&-->checked="checked"<!--&__/sk_billing__&-->> 請求対象</label>
+						</td>
+						<th width="10%">請求先</th>
+						<td width="35%"><select name="sk_cat"><option value="">▽選択▽</option>
+							<!--%__list_cat__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_cat__%-->
+							</select></td></tr>
+					<tr><th>クライアント</th>
+						<td><div class="mb5"><select name="sk_client"><option value="">▽選択▽</option>
+						<!--%__list_client__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_client__%--></select></div>
+						<div>又は <input type="text" name="sk_client_txt" value="<!--#__sk_client_txt__#-->" class="w70"></div></td>
+						<th>一般顧客</th>
+						<td><div class="mb5"><select name="sk_name"><option value="">▽選択▽</option>
+						<!--%__list_name__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_name__%--></select></div>
+						<div>又は <input type="text" name="sk_name_txt" value="<!--#__sk_name_txt__#-->" class="w70"></div></td></tr>
+					<tr><th>登録番号(下4桁)</th>
+						<td><input type="text" name="sk_r_number" value="<!--#__sk_r_number__#-->"></td>
+						<th>支払損保</th>
+						<td><input type="text" name="sk_claims_payer" value="<!--#__sk_claims_payer__#-->"></td></tr>
+					<tr><th>車種</th>
+						<td><select name="sk_maker"><option value="">▽選択▽</option>
+						<!--%__list_maker__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_maker__%--></select>
+						<select name="sk_body_type"><option value="">▽選択▽</option>
+						<!--%__list_body_type__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_body_type__%--></select></td>
+						<th>担当者</th>
+						<td><select name="sk_staff"><option value="">▽選択▽</option>
+						<!--%__list_staff__%--><option value="<!--#__sel_num__#-->"<!--&__fcs__&--> selected="selected"<!--&__/fcs__&-->><!--#__sel_val__#--></option><!--%__/list_staff__%--></select></td></tr>
+					</table>
+					<div style="display: flex; justify-content: center; position: relative;">
+						<p><a href="#" class="parentSubmit button buttonBlue">検索</a></p>
+						<!--&__invoice_list__&-->
+						<p style="position: absolute; right: 0;">
+						<a href="#" class="parentSubmit button buttonGreen" id="out_aggregate_csv">csv出力</a>　
+						<a href="#" class="parentSubmit button buttonGreen" id="out_aggregate_excel">集計表出力</a>
+						</p>
+						<!--&__/invoice_list__&-->
+						<input type="hidden" name="md" value="search">
+					</div>
+				</form>
+
+				<!--&__search_view__&-->
+				<h2 class="documentIcon">請求一覧</h2>
+				<!--&__invoice_list__&-->
+				<table class="basicTbl" id="tableInvoice">
+				<thead>
+				<tr><th width="10%">顧客</th>
+					<th width="7%">車種</th>
+					<th width="2.5%">カラー</th>
+					<th width="6%">登録番号</th>
+					<th width="3.5%">作業種別</th>
+				<!--	<th width="30%">修理情報・作業履歴</th>	-->
+					<th width="2%">納品日</th>
+					<th width="2%">請求日</th>
+					<th width="3%">整備費</th>
+					<th width="3%">諸費用</th>
+					<th width="3%">合計金額</th>
+					<th width="6%">入金</th>
+					<th width="3%">編集</th>
+					<th width="19%" colspan="2">出力（✓は出力済）</th>
+				</thead>
+				<!--%__invoice_list__%-->
+				<tr id="<!--#__wdc_seq__#-->" class="<!--#__bg_class__#-->">
+					<!--&__rawspan__&-->
+					<td class="aL" rowspan="<!--#__rawspan__#-->"><!--&__wcm_company__&--><!--#__wcm_company__#-->　<!--&__/wcm_company__&--><!--#__wcm_name__#--></td>
+					<!--&__/rawspan__&-->
+					<td class="aL"><!--#__wmk_name__#-->&nbsp;<!--#__wrp_body_type__#--></td>
+					<td class="aC"><!--#__wrp_color_jp__#--></td>
+					<td class="aC"><!--#__wrp_regist_area__#--> <!--#__wrp_regist_class__#--> <!--#__wrp_regist_hira__#--> <!--#__wrp_regist_number__#--></td>
+					<td class="aC"><a href="<!--#__link_url_direction__#-->"><!--#__wdc_type_jp__#--></a></td>
+					<td class="aC"><!--#__delivered_date_mmdd__#--></td>
+					<td class="aC"><!--#__billing_date_mmdd__#--></td>
+					<td class="aR"><!--#__mainte_amount_tax__#--></td>
+					<td class="aR"><!--#__expense_amount_tax__#--></td>
+					<td class="aR"><!--#__ammount_total__#--></td>
+					<td class="aL">
+						<input type="text" class="deposited datePicker" style="width:6em" name="wdc_deposited" value="<!--#__wdc_deposited__#-->"></td>
+					<td class="aC">
+						<a class="buttonSlim buttonBlue" href="/invoice/detail.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->">明細</a>
+					</td>
+					<td class="aC">
+						<a class="buttonSlim buttonYellow w20 estimate" href="/repair/print.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=estimate">見積書<!--#__wdc_estimate_stat__#--></a>　
+						<!--&__is_corp__&-->
+						<a class="buttonSlim buttonYellow w20 delivery" href="/repair/print.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=delivery">納品書<!--#__wdc_delivery_stat__#--></a>　
+						<!--&__/is_corp__&-->
+						<a class="buttonSlim w20 bill <!--&__wdc_bill_stat__&-->buttonGray<!--&__!wdc_bill_stat__&-->buttonGreen<!--&__/wdc_bill_stat__&-->"
+							href="<!--&__wdc_bill_stat__&-->#<!--&__!wdc_bill_stat__&-->/repair/print.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=bill<!--&__/wdc_bill_stat__&-->">請求書<!--#__wdc_bill_stat__#-->
+						</a>
+					</td>
+					<!--&__rawspan__&-->
+					<td class="aC" rowspan="<!--#__rawspan__#-->">
+						<!--&__is_corp__&-->
+						<a id="<!--#__wcm_seq__#-->" class="buttonMini w70 bill_sum <!--&__wdc_bill_sum_stat__&-->buttonGray<!--&__!wdc_bill_sum_stat__&-->buttonGreen<!--&__/wdc_bill_sum_stat__&-->"
+							href="<!--&__wdc_bill_sum_stat__&-->#<!--&__!wdc_bill_sum_stat__&-->/repair/print.php?wcm_seq=<!--#__wcm_seq__#-->&md=bill_sum&date_from=<!--#__date_from__#-->&date_to=<!--#__date_to__#--><!--&__/wdc_bill_sum_stat__&-->">合計請求書<!--#__wdc_bill_sum_stat__#-->
+						</a>
+					<!--&__/is_corp__&-->
+					</td>
+					<!--&__/rawspan__&-->
+				<!--%__/invoice_list__%-->
+				</table>
+				<!--&__!invoice_list__&-->
+				<p class="aC">検索結果がありませんでした。</p>
+				<!--&__/invoice_list__&-->
+				<!--&__/search_view__&-->
+
+			</div><!-- /editBox -->
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+
+</body>
+</html>

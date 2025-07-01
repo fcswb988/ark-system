@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+<link rel="stylesheet" href="../css/fancybox.min.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<link rel="stylesheet" type="text/css" href="../system2/css/contents.css" media="screen, print" title="default">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/invoiceClass_new.js"></script>
+<script type="text/javascript" src="../js/othBillClass.js"></script>
+<script type="text/javascript" src="../js/repairClass.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../system2/js/editFunc.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox.min.js"></script>
+</head>
+<body>
+<input id="tax_rate" type="hidden" value="<!--#__tax_rate__#-->">
+<div id="wrapper">
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <a href="/invoice_new/">請求管理</a> ＞ </p>
+
+	<div id="container">
+	<div id="contentsCol">
+		<div class="editBox" style="">
+		<div style="display: table; margin-top:5px">
+			<h2 class="documentIcon" style="float: left">その他 見積／請求明細</h2>
+		</div>
+<!--&__wcm_seq__&-->
+			<input type="hidden" id="wcm_seq" name="wcm_seq" value="<!--#__wcm_seq__#-->">
+			<table class="customer-table">
+			<tr>
+				<th width="5%">名前</th>
+				<td width="35%" id="customer_name">
+					<!--&__wcm_company__&--><!--#__wcm_company__#-->　<!--&__/wcm_company__&--><!--#__wcm_name__#-->
+				</td>
+				<th width="5%">住所</th>
+				<td class="address"><!--&__wcm_zipcode__&-->〒<!--#__wcm_zipcode__#--><br><!--&__/wcm_zipcode__&-->
+					<!--#__wcm_pref__#--><!--#__wcm_address__#--><!--&__wcm_building__&--><br><!--#__wcm_building__#--><!--&__/wcm_building__&--></td>
+				<th width="5%">電話番号</th>
+				<td class="tel" width="7%"><!--#__wcm_tel__#--></td>
+			</tr>
+			</table>
+<!--&__!wcm_seq__&-->
+			<h2 class="titleIcon">お客様情報の選択／登録</h2>
+			<form method="post" class="searchCustomer">
+			<h3>既に登録済みのお客様の場合</h3>
+			<p>検索条件を入力の上「検索実行」をクリックして下さい。最大20件まで表示されます。</p>
+			<!--&__err_mes__&--><p class="fontRed"><!--#__err_mes__#--></p><!--&__/err_mes__&-->
+				<table class="forPc">
+					<tr><th width="">カテゴリー</th>
+						<td width=""><select name="sk_cat"><option value="">▽選択▽</option>
+							<!--%__list_cat__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_cat__%-->
+							</select></td>
+					<th>法人</th>
+						<td><select name="sk_client"><option value="">▽選択▽</option>
+							<!--%__list_client__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_client__%-->
+							</select> 又は <input type="text" class="w40" name="sk_client_txt"></td>
+					<th>一般顧客</th>
+						<td><select name="sk_name"><option value="">▽選択▽</option>
+							<!--%__list_name__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_name__%-->
+							</select> 又は <input type="text" class="w30" name="sk_name_txt"></td></tr>
+				</table>
+				<dl class="forSp spInput">
+					<dt>カテゴリー</dt>
+						<dd><select name="sk_cat"><option value="">▽選択▽</option>
+							<!--%__list_cat__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_cat__%-->
+							</select></dd>
+					<dt>法人</dt>
+						<dd><select name="sk_client"><option value="">▽選択▽</option>
+							<!--%__list_client__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_client__%-->
+							</select> 又は <input type="text" class="w30" name="sk_client_txt"></dd>
+					<dt>一般顧客</dt>
+						<dd><select name="sk_name"><option value="">▽選択▽</option>
+							<!--%__list_name__%--><option value="<!--#__sel_num__#-->"><!--#__sel_val__#--></option><!--%__/list_name__%-->
+							</select> 又は <input type="text" class="w30" name="sk_name_txt"></dd>
+				</dl>
+				<p class="aC"><a class="button buttonBlue searchCustomerButton" href="#">検索実行</a>
+					<input type="hidden" name="md" value="load_search_index" /></p>
+
+				<div class="searchResult">
+					<table>
+						<thead>
+							<tr><th class="forPc">お客様<br>ID</th>
+								<th>カテゴリー</th>
+								<th>会社・氏名</th>
+								<th class="forPc">住所</th>
+								<th></th></tr>
+						</thead>
+						<tbody>
+		<!--%__selected_customer__%-->
+							<tr class="selected_customer">
+								<td><!--#__wcm_seq__#--></td>
+								<td><!--#__wcm_cat_jp__#--></td>
+								<td><!--#__wcm_company__#--><br><!--#__wcm_name__#-->
+								<td><!--#__wcm_address__#--><br><!--#__wcm_building__#-->
+								<td>選択中</td>
+							</tr>
+		<!--%__/selected_customer__%-->
+						</tbody>
+					</table>
+					<p class="notFound hidden">検索結果がありません</p>
+				</div>
+			</form>
+			<form id="oth_customer_form" action="./detail_oth.php" method="post" class="inputView">
+			<h3>お客様情報を新規登録する場合</h3>
+				<!--#__detail_view_cus__#-->
+				<p class="aC"><button type="button" id="oth_customer_submit" class="button buttonBlue">登録</button>
+				<input type="hidden" name="sel_wcm_seq" value="<!--#__sel_wcm_seq__#-->" />
+				<input type="hidden" name="seq" value="<!--#__mfl_seq__#-->" />
+
+				<input type="hidden" name="view" value="oth_customer" />
+				<input type="hidden" name="wcm_seq" value="<!--#__wcm_seq__#-->" />
+			</form>
+<!--&__/wcm_seq__&-->
+<!--&__wcm_seq__&-->
+			<!-- [[その他請求明細]] -->
+			<!--%__oth_bill_list__%-->
+			<div class="otherBill">
+				<input type="hidden" name="wob_seq" value="<!--#__wob_seq__#-->">
+				<input type="hidden" name="wob_bill_type" value="9">
+				<input type="hidden" name="wob_inc_taxfg" value="<!--#__wob_inc_taxfg__#-->">
+				<div>
+					<div>
+						請求日：<input type="text" name="wob_bill_date" value="<!--#__wob_bill_date__#-->" class="txtsize15 datePicker">
+						　担当：<select name="wob_wmmseq">
+							<!--%__sel_member_list__%--><option value="<!--#__value__#-->"<!--&__selected__&-->selected="selected"<!--&__/selected__&-->><!--#__title__#--></option><!--%__/sel_member_list__%-->
+						</select>
+					</div>
+					<div style="float: left">
+						<h2 style="display: inline-block;">明細行 <a class="addRow" href="javascript:;"><img src="../img/icon2_plus.png" alt=""></a></h2>
+						　　請求先：
+						<span style="font-size: 80%;">
+						<label><input type="radio" name="wob_payer" value="1" class="wob_payer9" <!--&__wob_payer1__&-->checked="checked"<!--&__/wob_payer1__&-->>損保</label>
+						<label><input type="radio" name="wob_payer" value="2" class="wob_payer9" <!--&__wob_payer2__&-->checked="checked"<!--&__/wob_payer2__&-->>個人</label>
+						</span>
+						　<span style="display: inline-block;" class="oth_bill_to"><!--#__bill_to__#--></span>
+						<span class="insurance" style="display:<!--#__disp_insurance__#-->">
+						　損保：
+							<select name="sel_insurance">
+								<!--%__insurance_list__%-->
+								<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+								<!--%__/insurance_list__%-->
+							</select>
+						</span>
+						　　<input type="checkbox" id="substcar" name="substcar" <!--&__disp_substcar__&-->checked="checked"<!--&__/disp_substcar__&-->>
+						<label for='substcar' class="fontSize14"> 代車</label>　　
+						<span class="substcar" style="display:<!--&__disp_substcar__&-->inline-block<!--&__!disp_substcar__&-->none<!--&__/disp_substcar__&-->">
+						：
+							<select name="sel_substcar">
+								<!--%__oth_substcar_list__%-->
+								<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+								<!--%__/oth_substcar_list__%-->
+							</select>
+							　　使用期間：<input type="text" name="start_date" value="<!--#__wsu_start_dt__#-->" class="datePicker">
+							～<input type="text" name="end_date" value="<!--#__wsu_end_dt__#-->" class="datePicker">
+							<a style="margin-left: 2em" class="buttonMini buttonOrange regist_substcar" href="javascript:;">代車使用作成</a>
+						</span>
+						<!--&__wob_seq__&-->
+							<a style="margin-left: 5em" class="buttonMini <!--&__wob_estimate_stat__&--> buttonGray<!--&__!wob_estimate_stat__&-->buttonGreen<!--&__/wob_estimate_stat__&--> outOthEst"
+							href="<!--&__wob_estimate_stat__&-->javascript:;<!--&__!wob_estimate_stat__&-->/invoice_new/detail.php?md=out_oth_bill&est=1&keep=1&wob_seq=<!--#__wob_seq__#--><!--&__/wob_estimate_stat__&-->">見積書<!--#__wob_estimate_stat__#--></a>　
+							<a class="buttonMini <!--&__wob_bill_stat__&--> buttonGray<!--&__!wob_bill_stat__&-->buttonGreen<!--&__/wob_bill_stat__&--> outOthBill"
+							href="<!--&__wob_bill_stat__&-->javascript:;<!--&__!wob_bill_stat__&-->/invoice_new/detail.php?md=out_oth_bill&bill=1&keep=1&wob_seq=<!--#__wob_seq__#--><!--&__/wob_bill_stat__&-->">請求書<!--#__wob_bill_stat__#--></a>　
+						<!--&__/wob_seq__&-->
+					</div>
+					<label class="fontSize18" style="float: right">
+						<input type="checkbox" class="inc_taxfg" <!--&__wob_inc_taxfg__&-->checked="checked"<!--&__/wob_inc_taxfg__&-->> 内税
+					</label>
+  				</div>
+  				<table class="tableOthBillList addList">
+					<thead>
+						<tr><th width="2%"><a href="javascript:;" class="delSelRow">削除</a></th>
+							<th width="2%"><input class="selRowAll" type="checkbox" ></th>
+							<th width="35%">内容</th>
+							<th width="5%">数量</th>
+							<th width="7%">単位</th>
+							<th width="7%">単価</th>
+							<th width="7%">金額</th>
+							<th width="7%">非課税</th>
+							<th width="15%" colspan="1">編集</th></tr>
+					</thead>
+					<tbody class="tbodyOthBillList">
+				<!--%__oth_bill_detail_list__%-->
+						<tr>
+							<td class="rowNo aR"">
+								<!--#__no__#-->
+							</td>
+							<td><input class="selRow" name="othBillSelect" type="checkbox" ></td>
+							<td class="aL content" style="text-align: center">
+								<input type="text" name="txt_wobd_title" value="<!--#__wobd_title__#-->" class="txtsize70 imeon">
+							</td>
+							<td class="aR">
+								<input type="text" name="txt_wobd_quantity" value="<!--#__wobd_quantity__#-->" class=" txtsize5 imeoff aR">
+							</td>
+							<td class="unit">
+								<select name="sel_wobd_unit">
+									<!--%__units__%-->
+									<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+									<!--%__/units__%-->
+								</select>
+							</td>
+							<td class="unit-price aR">
+								<input type="text" pattern="^[0-9]+$" name="txt_wobd_u_price" value="<!--#__wobd_u_price__#-->" class=" txtsize10 imeoff aR">
+							</td>
+							<td class="amount aR">
+								<input type="text" pattern="^[0-9]+$" name="txt_wobd_amount" value="<!--#__wobd_amount__#-->" class=" txtsize15 imeoff aR">
+							</td>
+							<td class="nontax-expence aR">
+								<input type="text" name="txt_wobd_non_tax" value="<!--#__wobd_non_tax__#-->" class=" txtsize15 imeoff aR">
+							</td>
+							<td>
+								<input type="hidden" name="wobd_seq" value="<!--#__wobd_seq__#-->">
+								<a class="buttonMini updateRow" href="javascript:;" style="display:none">保存</a>
+								<a class="buttonMini copyRow" href="javascript:;">複製</a>
+								<a class="buttonMini ml10 delRow" href="javascript:;">削除</a></td>
+						</tr>
+				<!--%__/oth_bill_detail_list__%-->
+					</tbody>
+					<tfoot>
+						<tr><th colspan="5" class="aL">
+							</th>
+							<th class="aR">合計</th>
+							<th class="total-amount aR"><!--&__sum_amount__&--><!--#__sum_amount__#--><!--&__/sum_amount__&--></th>
+							<th class="total-nontax aR"><!--&__sum_nontax__&--><!--#__sum_nontax__#--><!--&__/sum_nontax__&--></th>
+							<th colspan="3" class="total-sum aL">総合計　<!--#__total_sum__#-->　　（税：<!--#__tax_sum__#-->）</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<!--%__/oth_bill_list__%-->
+			<!--&__list_document__&-->
+			<h2 class="documentIcon">発行履歴</h2>
+			<table style="width:60%">
+				<thead>
+					<tr><th width="20%">登録日時</th><th>登録者</th>
+					<th>ファイル</th>
+				</thead>
+				<tbody>
+				<!--%__list_document__%-->
+					<tr><td class="aC"><!--#__wdc_created__#--></td>
+						<td class="aC"><!--#__wmm_name__#--></td>
+						<td class="aC"><a href="<!--#__link_url__#-->" target="_blank" download="<!--#__dl_name__#-->"><!--#__wdc_title__#--></a></td>
+					</tr>
+				<!--%__/list_document__%-->
+				</tbody>
+			</table>
+			<!--&__/list_document__&-->
+<!--&__/wcm_seq__&-->
+		</div><!-- /editBox -->
+		<!-- /[[その他請求明細]] -->
+		<div id="unit_template" class="hidden">
+			<select name="sel_wobd_unit">
+				<!--%__oth_bill_units__%-->
+				<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+				<!--%__/oth_bill_units__%-->
+			</select>
+			<select name="sel_wobd_wcpseq">
+				<!--%__oth_bill_by_list__%-->
+				<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+				<!--%__/oth_bill_by_list__%-->
+			</select>
+		</div>
+	<!--&__wob_seq__&-->
+		<p><a class="button" href="<!--#__back_list_url__#-->">一覧へ戻る</a></p>
+	<!--&__!wob_seq__&-->
+		<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+	<!--&__/wob_seq__&-->
+	</div><!-- /contentCol -->
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+<!--&__editing_users__&-->
+<div class="editNowAlert">
+	<p>ただいま、<!--#__editing_users__#-->さんが編集中です。</p>
+</div>
+<!--&__/editing_users__&-->
+<script type="text/javascript" src="../js/lightbox.min.js"></script>
+<div id="calendarWin"></div>
+<div id="snackbar">Some text some message..</div>
+</body>
+</html>

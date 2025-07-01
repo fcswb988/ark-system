@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><!--#__site_name__#--></title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="ALL">
+<link rel="stylesheet" href="../css/fancybox.min.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen, print" title="default">
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<script type="text/javascript" src="../js/invoiceClass_new.js"></script>
+<script type="text/javascript" src="../js/othBillClass.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../system2/js/editFunc.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox.min.js"></script>
+</head>
+<body>
+<input id="tax_rate" type="hidden" value="<!--#__tax_rate__#-->">
+<div id="wrapper">
+<!--#__header_html__#-->
+	<p id="breadcrumb"><a href="/">TOP</a> ＞ <a href="/invoice_new/">請求管理</a> ＞ </p>
+
+	<div id="container">
+
+		<div id="contentsCol">
+<!--&__wcm_seq__&-->
+			<div class="editBox" style="display: flex;">
+				<table class="customer-table">
+				<tr>
+					<th width="5%">名前</th>
+					<td width="35%" id="customer_name">
+						<!--&__wcm_company__&--><!--#__wcm_company__#-->　<!--&__/wcm_company__&--><!--#__wcm_name__#-->
+					</td>
+					<th width="5%">住所</th>
+					<td class="address"><!--&__wcm_zipcode__&-->〒<!--#__wcm_zipcode__#--><br><!--&__/wcm_zipcode__&-->
+						<!--#__wcm_pref__#--><!--#__wcm_address__#--><!--&__wcm_building__&--><br><!--#__wcm_building__#--><!--&__/wcm_building__&--></td>
+					<th width="5%">電話番号</th>
+					<td class="tel" width="7%"><!--#__wcm_tel__#--></td>
+				</tr>
+				</table>
+				<div style="margin-left:3em; margin-bottom: 5px; display: table; height:100%">
+					<a class="button buttonMid buttonOrange" style="display: table-cell; vertical-align: middle;" rel="" data-fancybox data-type="iframe" href="javascript:;" data-src="<!--#__edit_upside__#-->">修理情報を編集する</a>　
+				</div>
+			</div><!-- /editBox -->
+<!--&__/wcm_seq__&-->
+			<div class="editBox">
+				<table>
+				<tr><th width="10%">車名</th>
+					<th width="4%">カラー</th>
+					<th width="6%">登録番号</th>
+					<th width="4%">種別</th>
+					<th width="4%">入庫日</th>
+					<th width="4%">納車日</th>
+					<th width="5%">請求日</th>
+					<th width="4%">入金日</th>
+					<th width="5%">支払い方法</th>
+					<th width="10%">保険支払</th>
+				</tr>
+				<tr>
+					<td><!--#__wmk_name__#--> <!--#__wrp_body_type__#--></td>
+					<td><!--#__wrp_color_jp__#--></td>
+					<td><!--#__wrp_regist_area__#--> <!--#__wrp_regist_class__#--> <!--#__wrp_regist_hira__#--> <!--#__wrp_regist_number__#--></td>
+					<td><!--#__wdc_type_jp__#--></td>
+					<td><!--#__wdc_storing_date__#--></td>
+					<td><!--#__wdc_delivered_date__#--></td>
+					<td><input type="text" class="billing_date datePicker" style="width:6em" name="wdc_billing_date" value="<!--#__wdc_billing_date__#-->"></td>
+					<td><!--#__wdc_deposited__#--></td>
+					<td><!--#__wdc_pay_type_jp__#--></td>
+					<td id="claims_payer"><!--#__insurance_company_payer__#--></td>
+				</tr>
+				</table>
+				<h2 class="documentIcon">見積／請求明細</h2>
+				<div id="mainBox" style="display:flex;">
+				<div class="left" style="width:73%;">
+	<!-- [[請求明細]] -->
+					<form action="./detail.php" method="post">
+					<div>
+						<div style="float: left">
+						<h2 style="display: inline-block;">明細行 <a id="addRow" href="javascript:;" ><img src="../img/icon2_plus.png" alt=""></a></h2>
+							<a class="buttonMini buttonRed add_inspection_24" style="margin-left: 100px">車検項目</a>
+							<a class="buttonMini buttonRed add_inspection_12" style="margin-left: 10px">１２か月点検項目</a>
+							<a style="margin-left: 10em" class="buttonMini buttonYellow" href="/repair/print_new.php?wcm_seq=<!--#__wcm_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=estimate&keep=true">見積書<!--#__wdc_estimate_stat__#--></a>　
+							<a class="buttonMini buttonYellow" href="/repair/print_new.php?wcm_seq=<!--#__wcm_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=delivery&keep=true">納品書<!--#__wdc_delivery_stat__#--></a>　
+							<a class="buttonMini buttonGreen" href="/repair/print_new.php?wcm_seq=<!--#__wcm_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=bill&keep=true">請求書<!--#__wdc_bill_stat__#--></a>
+							<span style="margin-left:2em">粗利（整備計-仕入部品-外注費）：</span><span style="color:blue" id="gross_profit"><!--#__gross_profit__#--></span>
+						</div>
+						<div style="float: right">
+							<!--&__bill_list__&-->
+							<!--&__!bill_list__&-->
+								<a href="#" id= "copy_work" class="parentSubmit buttonMini buttonBlue" style="display:none">作業内容をコピー</a>
+							<!--&__/bill_list__&-->
+							<label for="inc_taxfg" class="fontSize18">
+								<input type="checkbox" id="inc_taxfg" <!--&__wdc_inc_taxfg__&-->checked="checked"<!--&__/wdc_inc_taxfg__&-->> 内税
+							</label>
+							<input type="hidden" name="md" value="copy_work">
+							<input type="hidden" id="wdc_seq" name="wdc_seq" value="<!--#__wdc_seq__#-->">
+							<input type="hidden" id="wcm_seq" name="wcm_seq" value="<!--#__wcm_seq__#-->">
+							<input type="hidden" id="src" name="src" value="<!--#__src__#-->">
+							<input type="hidden" id="outsc_total" name="outsc_total" value="<!--#__outsc_total__#-->">
+		  				</div>
+	  				</div>
+	  				</form>
+	  				<table id="tableBillList" class="addList">
+						<thead>
+							<tr><th width="2%"><a href="javascript:;" class="delSelRow">削除</a></th>
+								<th width="2%"><input class="selRowAll" type="checkbox" ></th>
+								<th width="35%">作業内容及び使用部品等</th>
+								<th width="5%">数量</th>
+								<th width="7%">単位</th>
+								<th width="7%">単価</th>
+								<th width="7%">部品代</th>
+								<th width="7%">技術料</th>
+								<th width="7%">整備費</th>
+								<th width="7%">非課税</th>
+								<th width="15%" colspan="1">編集</th></tr>
+						</thead>
+						<tbody id="tbodyBillList">
+	<!--%__bill_list__%-->
+							<tr class="<!--&__wbl_is_open__&-->openData<!--&__/wbl_is_open__&-->">
+								<td class="rowNo aR">
+									<!--#__no__#-->
+								</td>
+								<td><input class="selRow" name="othBillSelect" type="checkbox" ></td>
+								<td class="aL work-content" style="text-align: center">
+									<input type="text" name="txt_wbl_title" value="<!--#__wbl_title__#-->" class="txtsize70 imeon">
+								</td>
+								<td class="aR">
+									<input type="text" name="txt_wbl_amount" value="<!--#__wbl_amount__#-->" class=" txtsize5 imeoff aR">
+								</td>
+								<td class="unit">
+									<select name="sel_wbl_unit">
+										<!--%__units__%-->
+										<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+										<!--%__/units__%-->
+									</select>
+								</td>
+								<td class="unit-price aR">
+									<input type="text" pattern="^[0-9]+$" name="txt_wbl_u_price" value="<!--#__wbl_u_price__#-->" class=" txtsize10 imeoff aR" autocomplete="off">
+								</td>
+								<td class="part-generation aR">
+									<input type="text" pattern="^[0-9]+$" name="txt_wbl_p_price" value="<!--#__wbl_p_price__#-->" class=" txtsize15 imeoff aR" autocomplete="off">
+								</td>
+								<td class="technical-fee aR">
+									<input type="text" pattern="^[0-9]+$" name="txt_wbl_w_price" value="<!--#__wbl_w_price__#-->" class=" txtsize15 imeoff aR" autocomplete="off">
+								</td>
+								<td class="workLineSum aR"><!--&__sum_price__&--><!--#__sum_price__#--><!--&__/sum_price__&--></td>
+								<td class="nontax-expence aR">
+									<input type="text" name="txt_wbl_non_tax" value="<!--#__wbl_non_tax__#-->" class=" txtsize15 imeoff aR">
+								</td>
+								<td>
+									<a class="button buttonMini updateRow" href="javascript:;" style="display:none">保存</a>
+									<input type="hidden" name="seq" value="<!--#__wbl_seq__#-->">
+									<a class="button buttonMini copyRow" href="javascript:;">複製</a>
+									<a class="button buttonMini ml10 delRow" href="javascript:;">削除</a></td>
+							</tr>
+	<!--%__/bill_list__%-->
+						</tbody>
+						<tfoot>
+							<tr><th colspan="5" class="aL">
+								<div style="display:inline-flex;">
+				  					<label for="chkAdjTotal" class="fontSize14">
+					  					<input type="checkbox" id="chkAdjTotal"> 調整値引き
+									</label>
+									<div id="divAdj" style="display:inline-flex; align-items: baseline;">
+										　調整前：<div class="orgAmmount"></div>
+										　調整後：<input type="text" pattern="^[0-9]+$" id="adjAfterAmount" class="txtsize10 imeoff aR">
+										　<b>調整額：</b><div id="adjAmount" style="width:7em;"></div>
+										<input type="button" class="button buttonSlim buttonBlue adjustTotal" value="明細へ追加">
+									</div>
+								</div>
+								</th>
+								<th class="aR">合計</th>
+								<th class="total-parts-fee aR"><!--&__sum_p_price__&--><!--#__sum_p_price__#--><!--&__/sum_p_price__&--></th>
+								<th class="total-technical-fee aR"><!--&__sum_w_price__&--><!--#__sum_w_price__#--><!--&__/sum_w_price__&--></th>
+								<th class="total-all-works aR">整備計：<var><!--&__sum_price__&--><!--#__sum_price__#--><!--&__/sum_price__&--></var></th>
+								<th class="total-nontax aR"><!--&__sum_nontax__&--><!--#__sum_nontax__#--><!--&__/sum_nontax__&--></th>
+								<th colspan="3" class="total-tax aL">税：<var>0</var></th>
+							</tr>
+						</tfoot>
+					</table>
+	<!-- [[請求明細]] -->
+					<div  style="display:flex; overflow-x: auto;">
+	  				<table id="tableDeductible" style="width:20%;">
+	  					<tr>
+	  						<th>返金額</th>
+							<th>免責額(内税)&nbsp;
+							<a class="button buttonMini <!--&__deductible_stat__&-->buttonGray<!--&__!deductible_stat__&-->buttonGreen<!--&__/deductible_stat__&--> billDeductible"
+							href="<!--&__deductible_stat__&-->#<!--&__!deductible_stat__&-->/repair/print_new.php?wcm_seq=<!--#__wcm_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md=billDeductible&keep=true<!--&__/deductible_stat__&-->">請求書<!--#__deductible_stat__#--></a>
+							</th>
+	  					</tr>
+	  					<tr>
+							<td class="aR">
+								<input type="text" name="txt_wdc_refund" value="<!--#__wdc_refund__#-->" class=" txtsize10 imeoff aR">
+							</td>
+							<td class="aR">
+								<input type="text" name="txt_wdc_deductible" value="<!--#__wdc_deductible__#-->" class=" txtsize10 imeoff aR">
+							</td>
+	  					</tr>
+	  				</table>
+	  				<table id="tableExpenses" style="margin-left:50px;">
+	  					<tr>
+							<th>重量税</th><th>自賠責</th><th>印紙代</th><th>車検代行費</th><th>諸費用消費税</th>
+	  					</tr>
+	  					<tr>
+							<td class="aR">
+								<input type="text" name="txt_wdc_weight_tax" value="<!--#__wdc_weight_tax__#-->" class=" txtsize10 imeoff aR">
+							</td>
+							<td class="aR">
+								<input type="text" name="txt_wdc_liability_insurance" value="<!--#__wdc_liability_insurance__#-->" class=" txtsize10 imeoff aR">
+							</td>
+							<td class="aR">
+								<input type="text" name="txt_wdc_stamp_tax" value="<!--#__wdc_stamp_tax__#-->" class=" txtsize10 imeoff aR">
+							</td>
+							<td class="aR">
+								<input type="text" name="txt_wdc_inspection_fee" value="<!--#__wdc_inspection_fee__#-->" class=" txtsize10 imeoff aR">
+							</td>
+							<td class="tax-inspection aR"></td>
+	  					</tr>
+	  				</table>
+	  				<table id="tableSum" style="margin-left:50px; width:60%;">
+	  					<tr>
+							<th>整備費用合計</th><th>諸費用合計</th><th>非課税合計</th><th style="width:30%;"><b>総合計</b></th>
+	  					</tr>
+	  					<tr>
+							<td class="total-maintenance aR"><!--#__total-maintenance__#--></td>
+							<td class="total-expenses aR"><!--#__total-expenses__#--></td>
+							<td class="total-nontax aR"><!--#__total-nontax__#--></td>
+							<td class="total-all aR bold"><!--#__total-all__#--></td>
+	  					</tr>
+	  				</table>
+					</div>
+					<div id="template" class="hidden">
+						<select name="sel_wbl_unit">
+							<!--%__units__%-->
+							<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+							<!--%__/units__%-->
+						</select>
+					</div>
+  				</div>
+				<div style="padding-left:1em; width:25%; vertical-align: top; overflow-y: scroll">
+					<h3 style="padding: 5px 0 2px;">作業内容</h3>
+	  				<table id="tableWorkList" style=" ">
+	  					<thead>
+						<tr>
+							<th style="display:flex; border: transparent;"><p class="disp_hide" style="position: relative; top:10%; cursor: pointer;">－</p>
+							<p style="position: relative; left:42%"><a href="/repair/condition.php?wcm_seq=<!--#__wcm_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->">作業内容</a></p>
+							</th>
+							<th style="width:20%">
+								<!--&__work_list__&-->
+								<a class="buttonSlim buttonBlue copy_all_detail">全てコピー</a>
+								<!--&__/work_list__&-->
+							</th>
+						</tr>
+						</thead>
+						<tbody id="tbodyWorkList">
+	<!--%__work_list__%-->
+						<tr>
+							<td class="wwl_title"><!--#__wwl_title__#--></td>
+							<td class="aC"><a class="buttonSlim buttonBlue copy_detail" style="">コピー</a></td>
+						</tr>
+	<!--%__/work_list__%-->
+						</tbody>
+	  				</table>
+<!--&__parts_list__&-->
+					<h3 style="padding: 5px 0 2px;">部品リスト</h3>
+	  				<table id="tableWorkList">
+	  					<thead>
+						<tr>
+							<th style="display:flex; border: transparent;"><p class="disp_hide" style="position: relative; top:10%; cursor: pointer;">＋</p>
+							<p style="position: relative; left:42%">部品</p></th>
+							<th>仕入	</th>
+							<th>販売	</th>
+							<th style="width:20%"><a class="buttonSlim buttonBlue copy_all_detail_parts">全てコピー</a></th>
+						</tr>
+						</thead>
+						<tbody id="tbodyPartsList">
+	<!--%__parts_list__%-->
+						<tr>
+							<td class="wpl_title"><!--#__wpl_name__#--></td>
+							<td class="aR"><!--#__purchase__#--></td>
+							<td class="aR amount"><!--#__amount__#--></td>
+							<td class="aC"><a class="buttonSlim buttonBlue copy_detail_parts" style="">コピー</a>
+							<input type="hidden" class="unit_price" value="<!--#__wpl_base_price__#-->">
+							<input type="hidden" class="quantity" value="<!--#__wpl_amount__#-->">
+							</td>
+						</tr>
+	<!--%__/parts_list__%-->
+						</tbody>
+						<tfoot>
+						<tr>
+							<th width="80%">合計</th>
+							<th class="aR" id="purchaseTotal"><!--#__purchaseTotal__#--></th>
+							<th class="aR"><!--#__partsTotal__#--></th>
+							<th></th>
+						</tr>
+						</tfoot>
+	  				</table>
+<!--&__/parts_list__&-->
+<!--&__outsc_list__&-->
+					<h3 style="padding: 5px 0 2px;">外注作業</h3>
+	  				<table id="tableOutscList">
+	  					<thead>
+						<tr>
+							<th style="display:flex; border: transparent;"><p class="disp_hide" style="position: relative; top:10%; cursor: pointer;">＋</p>
+							<p style="position: relative; left:42%">作業内容</p></th>
+							<th>金額	</th>
+						</tr>
+						</thead>
+						<tbody id="tbodyOutscList">
+	<!--%__outsc_list__%-->
+						<tr>
+							<td class="wol_title"><!--#__wol_title__#--></td>
+							<td class="aR"><!--#__wol_price__#--></td>
+						</tr>
+	<!--%__/outsc_list__%-->
+						</tbody>
+						<tfoot>
+						<tr>
+							<th width="80%">合計</th>
+							<th class="aR"><!--#__outsc_total__#--></th>
+						</tr>
+						</tfoot>
+	  				</table>
+<!--&__/outsc_list__&-->
+				</div>
+				</div>
+
+				<div style="display: table; margin-top:5px">
+					<h2 class="documentIcon" style="float: left">その他 見積／請求明細</h2>
+					<a class="buttonMini buttonRed addOthBill" style="margin: 5px 5em 0 5em;" href="/invoice_new/detail.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md_=add_other_bill&type=1">代車代</a>
+					<a class="buttonMini buttonRed addOthBill" href="/invoice_new/detail.php?wcm_seq=<!--#__wcm_seq__#-->&wrp_seq=<!--#__wrp_seq__#-->&wdc_seq=<!--#__wdc_seq__#-->&md_=add_other_bill&type=2">レッカー代</a>
+				</div>
+				<div class="left" style="width:73%;">
+				<!-- [[その他請求明細]] -->
+				<!--%__oth_bill_list__%-->
+				<div class="otherBill">
+					<input type="hidden" name="wob_seq" value="<!--#__wob_seq__#-->">
+					<input type="hidden" name="wob_bill_type" value="<!--#__wob_bill_type__#-->">
+					<input type="hidden" name="wob_inc_taxfg" value="<!--#__wob_inc_taxfg__#-->">
+					<input type="hidden" name="wob_bill_date" value="<!--#__wob_bill_date__#-->">
+					<div>
+						<div style="float: left">
+						<h2 style="display: inline-block;">明細行 <a class="addRow" href="javascript:;"><img src="../img/icon2_plus.png" alt=""></a></h2>
+							　《<!--#__wob_bill_type_name__#-->》
+							　　請求先：
+							<span style="font-size: 80%;">
+							<label><input type="radio" name="wob_payer<!--#__wob_seq__#-->" value="1" class="wob_payer_9" <!--&__wob_payer1__&-->checked="checked"<!--&__/wob_payer1__&-->>損保</label>
+							<label><input type="radio" name="wob_payer<!--#__wob_seq__#-->" value="2" class="wob_payer_9" <!--&__wob_payer2__&-->checked="checked"<!--&__/wob_payer2__&-->>個人</label>
+							</span>
+							　<span style="display: inline-block; min-width:10em" class="oth_bill_to"><!--#__bill_to__#--></span>
+							<!--&__oth_substcar_list__&-->
+							　　代車：
+								<select name="sel_substcar">
+									<!--%__oth_substcar_list__%-->
+									<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&--> <!--&__disabled__&-->disabled<!--&__/disabled__&-->><!--#__title__#--></option>
+									<!--%__/oth_substcar_list__%-->
+								</select>
+							<!--&__/oth_substcar_list__&-->
+							<a style="margin-left: 5em" class="buttonMini <!--&__wob_estimate_stat__&--> buttonGray<!--&__!wob_estimate_stat__&-->buttonGreen<!--&__/wob_estimate_stat__&--> outOthEst"
+							href="<!--&__wob_estimate_stat__&-->javascript:;<!--&__!wob_estimate_stat__&-->/invoice_new/detail.php?md=out_oth_bill&est=1&keep=true&wob_seq=<!--#__wob_seq__#--><!--&__/wob_estimate_stat__&-->">見積書<!--#__wob_estimate_stat__#--></a>　
+							<a class="buttonMini <!--&__wob_bill_stat__&--> buttonGray<!--&__!wob_bill_stat__&-->buttonGreen<!--&__/wob_bill_stat__&--> outOthBill"
+							href="<!--&__wob_bill_stat__&-->javascript:;<!--&__!wob_bill_stat__&-->/invoice_new/detail.php?md=out_oth_bill&bill=1&keep=true&wob_seq=<!--#__wob_seq__#--><!--&__/wob_bill_stat__&-->">請求書<!--#__wob_bill_stat__#--></a>　
+						</div>
+						<label class="fontSize18" style="float: right">
+							<input type="checkbox" class="inc_taxfg" <!--&__wob_inc_taxfg__&-->checked="checked"<!--&__/wob_inc_taxfg__&-->> 内税
+						</label>
+	  				</div>
+	  				<table class="tableOthBillList addList">
+						<thead>
+							<tr><th width="2%"><a href="javascript:;" class="delSelRow">削除</a></th>
+								<th width="2%"><input class="selRowAll" type="checkbox" ></th>
+								<th width="35%">内容</th>
+								<th width="5%">数量</th>
+								<th width="7%">単位</th>
+								<th width="7%">単価</th>
+								<th width="7%">金額</th>
+								<th width="7%">非課税</th>
+								<th width="15%" colspan="1">編集</th></tr>
+						</thead>
+						<tbody class="tbodyOthBillList">
+					<!--%__oth_bill_detail_list__%-->
+							<tr>
+								<td class="rowNo aR"">
+									<!--#__no__#-->
+								</td>
+								<td><input class="selRow" name="othBillSelect" type="checkbox" ></td>
+								<td class="aL content" style="text-align: center">
+									<input type="text" name="txt_wobd_title" value="<!--#__wobd_title__#-->" class="txtsize70 imeon">
+								</td>
+								<td class="aR">
+									<input type="text" name="txt_wobd_quantity" value="<!--#__wobd_quantity__#-->" class=" txtsize5 imeoff aR">
+								</td>
+								<td class="unit">
+									<select name="sel_wobd_unit">
+										<!--%__units__%-->
+										<option value="<!--#__value__#-->" <!--&__selected__&--> selected="selected"<!--&__/selected__&-->><!--#__title__#--></option>
+										<!--%__/units__%-->
+									</select>
+								</td>
+								<td class="unit-price aR">
+									<input type="text" pattern="^[0-9]+$" name="txt_wobd_u_price" value="<!--#__wobd_u_price__#-->" class=" txtsize10 imeoff aR">
+								</td>
+								<td class="amount aR">
+									<input type="text" pattern="^[0-9]+$" name="txt_wobd_amount" value="<!--#__wobd_amount__#-->" class=" txtsize15 imeoff aR">
+								</td>
+								<td class="nontax-expence aR">
+									<input type="text" name="txt_wobd_non_tax" value="<!--#__wobd_non_tax__#-->" class=" txtsize15 imeoff aR">
+								</td>
+								<td>
+									<input type="hidden" name="wobd_seq" value="<!--#__wobd_seq__#-->">
+									<a class="button buttonMini updateRow" href="javascript:;" style="display:none">保存</a>
+									<a class="button buttonMini copyRow" href="javascript:;">複製</a>
+									<a class="button buttonMini ml10 delRow" href="javascript:;">削除</a></td>
+							</tr>
+					<!--%__/oth_bill_detail_list__%-->
+						</tbody>
+						<tfoot>
+							<tr><th colspan="5" class="aL">
+								</th>
+								<th class="aR">合計</th>
+								<th class="total-amount aR"><!--&__sum_amount__&--><!--#__sum_amount__#--><!--&__/sum_amount__&--></th>
+								<th class="total-nontax aR"><!--&__sum_nontax__&--><!--#__sum_nontax__#--><!--&__/sum_nontax__&--></th>
+								<th colspan="3" class="total-sum aL">総合計　<!--#__total_sum__#-->　　（税：<!--#__tax_sum__#-->）</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				<!--%__/oth_bill_list__%-->
+				<!-- /[[その他請求明細]] -->
+				<div id="unit_template" class="hidden">
+					<select name="sel_wobd_unit">
+						<!--%__oth_bill_units__%-->
+						<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+						<!--%__/oth_bill_units__%-->
+					</select>
+					<select name="sel_wobd_wcpseq">
+						<!--%__oth_bill_by_list__%-->
+						<option value="<!--#__value__#-->" ><!--#__title__#--></option>
+						<!--%__/oth_bill_by_list__%-->
+					</select>
+				</div>
+				</div>
+				<!--&__back_url__&-->
+				<a class="button" href="<!--#__back_url__#-->">前画面に戻る</a>
+				<!--&__!back_url__&-->
+				<input class="button" type="button" value="前画面に戻る" onClick="history.back();" />
+				<!--&__/back_url__&-->
+			</div><!-- /editBox -->
+		</div>
+	</div><!-- /container -->
+</div><!-- /wrapper -->
+<!--&__editing_users__&-->
+<div class="editNowAlert">
+	<p>ただいま、<!--#__editing_users__#-->さんが編集中です。</p>
+</div>
+<!--&__/editing_users__&-->
+<script type="text/javascript" src="../js/lightbox.min.js"></script>
+<div id="calendarWin"></div>
+<div id="snackbar">Some text some message..</div>
+</body>
+</html>
